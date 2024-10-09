@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Hamburger from "./Hamburger";
+import LogoDark from "../../public/LogoDark.svg";
 
 export function NavbarAlt() {
   return (
@@ -12,10 +13,10 @@ export function NavbarAlt() {
           <Link href="/" aria-label="Gå til landingssiden">
             <Image
               className="w-28 lg:w-36"
-              src={""}
+              src={LogoDark}
               width={350}
               height={220}
-              alt="Jobloop Logo"
+              alt="Teamwork Logo"
             />
           </Link>
         </div>

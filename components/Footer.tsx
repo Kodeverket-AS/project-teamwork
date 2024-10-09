@@ -3,12 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaLinkedinIn, FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
+import LogoLight from "../public/LogoLight.svg";
 
 export default function Footer() {
   return (
     <footer className="w-full pb-4 text-kv-white bg-[#373131]">
-        <div className="flex flex-row justify-center items-center">
-            <Image src={""} height={250} width={350} className="" alt="" />
+        <div className="flex flex-row justify-center items-center w-56 h-auto mx-auto py-5">
+            <Image src={LogoLight} height={250} width={350} className="" alt="Teamwork logo" />
         </div>
         <div className="flex flex-row justify-center items-center gap-4 pb-3">
             <Link href={"/"}>Modell</Link>
