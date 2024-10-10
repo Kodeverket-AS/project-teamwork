@@ -17,6 +17,14 @@ const config: Config = {
           black: "#0B1215",
           white: "#FCFCFC",
         },
+        teamwork: {
+          primary: {
+            orange: "#ED6B1C",
+          },
+          secondary: {
+            orange: "#FAD3BB",
+          },
+        },
       },
       keyframes: {
         scroll: {

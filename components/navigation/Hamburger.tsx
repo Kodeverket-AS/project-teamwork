@@ -34,28 +34,31 @@ const Hamburger = () => {
 
       <div
         ref={menuRef}
-        className={`fixed top-0 left-0 h-full bg-white shadow-md w-64 transition-transform transform ${
+        className={`fixed top-0 left-0 h-full bg-kv-black text-kv-white shadow-md w-64 transition-transform transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <ul className="p-4 space-y-4">
           <li>
-            <Link href="#home" onClick={() => setIsOpen(false)}>
-              Home
+            <Link href="/" onClick={() => setIsOpen(false)}>
+              Modell
             </Link>
           </li>
           <li>
-            <Link href="#about" onClick={() => setIsOpen(false)}>
-              About
+            <Link href="/" onClick={() => setIsOpen(false)}>
+              Tjenester
             </Link>
           </li>
           <li>
-            <Link href="#services" onClick={() => setIsOpen(false)}>
-              Services
+            <Link href="/" onClick={() => setIsOpen(false)}>
+              Historier
             </Link>
           </li>
-
-          {/* Legg til flere Links her */}
+          <li>
+            <Link href="/" onClick={() => setIsOpen(false)}>
+              Suksess
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

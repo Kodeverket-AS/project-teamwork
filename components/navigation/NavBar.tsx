@@ -23,18 +23,32 @@ export function NavbarAlt() {
         <div>
           <div className="hidden h-auto p-4 md:block">
             <Link
-              href="/om-oss"
-              aria-label="gå til denne undersiden for å lese mer om oss"
-              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-jobloop-secondary-green md:hover:underline"
+              href="/"
+              aria-label="gå til denne seksjonen og les om modellen vår"
+              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
-              Om Oss
+              Modell
             </Link>
             <Link
-              href="/kontakt"
-              aria-label="gå til denne undersiden for å ta kontakt med en av oss"
-              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-jobloop-secondary-green md:hover:underline"
+              href="/"
+              aria-label="gå til denne seksjonen for å lese om tjenestene våre"
+              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
-              Kontakt
+              Tjenester
+            </Link>
+            <Link
+              href="/"
+              aria-label="gå til denne seksjonen for å lese om noen av historiene om oss"
+              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
+            >
+              Historier
+            </Link>
+            <Link
+              href="/"
+              aria-label="gå til denne seksjonen for å lese om suksessen våre kunder har hatt"
+              className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
+            >
+              Suksess
             </Link>
           </div>
           <div className="px-4 md:hidden">
