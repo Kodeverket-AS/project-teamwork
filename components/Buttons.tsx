@@ -35,3 +35,12 @@ export function ScrollToTopButton() {
     </button>
   );
 }
+
+
+export function DownloadButton() {
+  return (
+    <a href="" rel="noopener noreferrer" className="bg-teamwork-primary-orange w-full md:w-fit px-3 py-2 rounded text-center">
+      Last ned håndboken
+    </a>
+  )
+}
