@@ -14,7 +14,7 @@ export default function Model() {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   return (
-    <div className="bg-teamwork-secondary-orange w-full flex flex-col md:flex-row px-5 md:px-10 py-14">
+    <div className="bg-teamwork-secondary-orange w-full flex flex-col md:flex-row px-5 md:px-10 py-14 gap-10">
       <div className="flex flex-col gap-3 w-full md:w-1/2">
         <h2>Modell</h2>
         <div
@@ -24,7 +24,7 @@ export default function Model() {
         >
           <button onClick={() => setShow1(!show1)} className="w-full">
             <div className="flex flex-row justify-between">
-              <div className="flex flex-row">
+              <div className="flex flex-row justify-center items-center">
                 <Image
                   src={Icon1}
                   width={100}
@@ -32,7 +32,7 @@ export default function Model() {
                   className="w-auto h-10"
                   alt="ikon tilhørende et ledende fagmiljø"
                 />
-                <h3>Et ledende fagmiljø</h3>
+                <h4>Et ledende fagmiljø</h4>
               </div>
               {show1 ? (
                 <FaArrowUp className="w-6 h-auto" />
@@ -57,7 +57,7 @@ export default function Model() {
         >
           <button onClick={() => setShow2(!show2)} className="w-full">
             <div className="flex flex-row justify-between">
-              <div className="flex flex-row">
+              <div className="flex flex-row justify-center items-center">
                 <Image
                   src={Icon2}
                   width={100}
@@ -65,7 +65,7 @@ export default function Model() {
                   className="w-auto h-10"
                   alt="ikon tilhørende et ledende fagmiljø"
                 />
-                <h3>Medarbeiderskap</h3>
+                <h4>Medarbeiderskap</h4>
               </div>
               {show2 ? (
                 <FaArrowUp className="w-6 h-auto" />
@@ -88,7 +88,7 @@ export default function Model() {
         >
           <button onClick={() => setShow3(!show3)} className="w-full">
             <div className="flex flex-row justify-between">
-              <div className="flex flex-row">
+              <div className="flex flex-row justify-center items-center">
                 <Image
                   src={Icon3}
                   width={100}
@@ -96,7 +96,7 @@ export default function Model() {
                   className="w-auto h-10"
                   alt="ikon tilhørende et ledende fagmiljø"
                 />
-                <h3>Solid samarbeidspartner</h3>
+                <h4>Solid samarbeidspartner</h4>
               </div>
               {show3 ? (
                 <FaArrowUp className="w-6 h-auto" />
