@@ -7,18 +7,21 @@ import Histories from "../../components/Histories";
 import Team from "../../components/Team";
 import Success from "../../components/Success";
 import { getData } from "../../sanity/getData";
+import { dummydata } from "../../components/dummydata/dummydata";
 
 export default async function Home() {
   const data = await getData();
   const services = data.services;
+  const team = dummydata; // dummydata. Remember to replace and refactor what needs to be.
+
   return (
-    <main className="flex flex-col items-center justify-between w-full">
+    <main className="flex flex-col items-center justify-between w-full overflow-hidden">
       <Hero />
       <Model />
       <Services content={services} />
       <Histories />
       <Books />
-      <Team />
+      <Team content={team} />
       <Success />
     </main>
   );
