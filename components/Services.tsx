@@ -1,15 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-
 interface Contents {
   title: string;
   content: string;
   image: string;
 }
 
-export default function Services({ content: Contents[] }) {
+export default function Services({
+  content,
+}: {
+  content: Contents[];
+}) {
   return (
     <div className="bg-kv-white w-full flex flex-col px-5 md:px-10 py-14 gap-10">
       <h2>Tjenester</h2>

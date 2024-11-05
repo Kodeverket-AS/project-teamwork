@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter, Ysabeau_SC } from "next/font/google";
 import "./globals.css";
 import { ScrollToTopButton } from "../../components/Buttons";
 import { NavbarAlt } from "../../components/navigation/NavBar";
 import Footer from "../../components/Footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const ysabeauSC = Ysabeau_SC({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
 });
 
 export const metadata: Metadata = {
@@ -27,10 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang="en"
+      className={`${inter.variable} ${ysabeauSC.variable}`}>
+      <body className={`${inter.className} antialiased`}>
         <NavbarAlt />
         {children}
         <ScrollToTopButton />

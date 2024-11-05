@@ -12,6 +12,10 @@ const config: Config = {
         "2xs": "375px",
         xs: "425px",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-heading)"],
+      },
       colors: {
         kv: {
           black: "#0B1215",
