@@ -10,7 +10,19 @@ type TContentItem = {
   image: string;
   location: string;
 };
+
+type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+
+type TLocations = TLocation[];
+
 type TContent = TContentItem[];
+
+export const locationsData: TLocations = [
+  "Alle",
+  "Oslo",
+  "Trondheim",
+  "Bergen",
+];
 
 export const dummydata: TContent = [
   {

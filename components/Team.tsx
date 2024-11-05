@@ -5,6 +5,7 @@ import { FaUserAltSlash } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
+import { locationsData } from "./dummydata/dummydata";
 
 // TYPE for TeamMemberCard
 type TMemberCardProps = {
@@ -30,6 +31,16 @@ type TContentItem = {
 };
 type TContent = TContentItem[];
 
+// Component to replace image when image is missing
+const ImageMissingComponent = () => (
+  <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
+    <FaUserAltSlash className="text-3xl" />
+    <p className="text-xs transition-all group-hover:text-sm">
+      Image not available
+    </p>
+  </div>
+);
+
 // TeamMemberCard component
 const TeamMemberCard: React.FC<TMemberCardProps> = ({
   name,
@@ -50,20 +61,24 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
             className="w-full h-full bg-slate-300"
           />
         ) : (
-          <div className="w-full h-full flex justify-center items-center bg-slate-100">
-            <FaUserAltSlash className="text-3xl text-slate-800" />
-          </div>
+          <ImageMissingComponent />
         )}
       </div>
 
-      <div className="w-full h-full p-4">
+      <div className="w-full h-full p-4 pb-6">
         <div className="pb-4">
           <h2 className="text-2xl">{name}</h2>
           <p className="text-sm">{role}</p>
         </div>
         <div className="text-xs text-kv-black/70 leading-relaxed">
-          <p>Mobil: {phone}</p>
-          <p>Epost: {email}</p>
+          <div className="flex gap-1">
+            <b>Mobil:</b>
+            <p>{phone}</p>
+          </div>
+          <div className="flex gap-1">
+            <b>Epost:</b>
+            <p>{email}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -71,7 +86,8 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
 };
 
 // Locations Array
-const locations = ["Alle", "Oslo", "Trondheim", "Bergen"];
+// const locations = ["Alle", "Oslo", "Trondheim", "Bergen"];
+const locations = locationsData;
 
 // Team component
 export default function Team({ content }: { content: TContent }) {
