@@ -40,7 +40,7 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
   image,
 }: TMemberCardProps) => {
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-md w-full sm:min-w-96 sm:w-96 flex flex-col items-left justify-center shadow-lg">
+    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-200 shadow-md hover:shadow-lg">
       <div className="h-64 w-full">
         {image ? (
           <Image
@@ -91,14 +91,16 @@ export default function Team({ content }: { content: TContent }) {
 
   return (
     <section className="w-screen bg-teamwork-secondary-orange ">
-      <div className="container mx-auto  py-14">
-        <div className="px-5 md:px-10 pb-4">
+      <div className="relative container mx-auto pt-20 pb-12 sm:px-0">
+        <div className="absolute left-0 top-0 h-full w-5 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
+        <div className="absolute right-0 top-0 h-full w-5 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
+        <div className="px-5 md:px-10 pb-4 ">
           <h1 className="pb-10">Vårt team</h1>
-          <ul className="flex gap-4 pb-4">
+          <ul className="appearance-none flex gap-4 pb-4">
             {locations.map((loc) => (
               <li
                 key={loc}
-                className={`underline-offset-4 ${
+                className={`appearance-none py-3 pr-1 underline-offset-4 ${
                   location === loc
                     ? "underline font-semibold"
                     : "underline-none font-normal"
@@ -111,7 +113,7 @@ export default function Team({ content }: { content: TContent }) {
         </div>
         <div
           style={{ scrollbarWidth: "none" }}
-          className="sm:w-screen sm:overflow-x-auto pb-5 sm:pl-5 md:pl-10 sm:pr-40 flex flex-col sm:flex-row gap-4 items-center">
+          className="w-full overflow-x-auto pb-5 sm:pl-5 md:pl-10 pl-4 pr-4 sm:pr-10 flex flex-row gap-4 items-center">
           {filteredContent.map(
             (item: TContentItem, index: number) => (
               <TeamMemberCard
@@ -127,7 +129,7 @@ export default function Team({ content }: { content: TContent }) {
             )
           )}
         </div>
-        <div className="hidden sm:flex w-full justify-end">
+        <div className="flex w-full justify-end pt-4">
           <div className="flex gap-2 px-5 text-base text-teamwork-primary-orange/60">
             <FaChevronLeft />
             <FaChevronRight />
