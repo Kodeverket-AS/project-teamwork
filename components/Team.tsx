@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import { FaUserAltSlash } from "react-icons/fa";
+import { CgScrollH } from "react-icons/cg";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 
 // TYPE for TeamMemberCard
@@ -37,7 +40,7 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
   image,
 }: TMemberCardProps) => {
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 w-full sm:w-96 flex flex-col items-left justify-center">
+    <div className="bg-white text-kv-black overflow-hidden rounded-md w-full sm:min-w-96 sm:w-96 flex flex-col items-left justify-center shadow-lg">
       <div className="h-64 w-full">
         {image ? (
           <Image
@@ -56,12 +59,12 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
 
       <div className="w-full h-full p-4">
         <div className="pb-4">
-          <h2 className="text-3xl">{name}</h2>
-          <p className="">{role}</p>
+          <h2 className="text-2xl">{name}</h2>
+          <p className="text-sm">{role}</p>
         </div>
-        <div className="text-sm text-kv-black/70 leading-relaxed">
-          <p>{phone}</p>
-          <p>{email}</p>
+        <div className="text-xs text-kv-black/70 leading-relaxed">
+          <p>Mobil: {phone}</p>
+          <p>Epost: {email}</p>
         </div>
       </div>
     </div>
@@ -88,9 +91,8 @@ export default function Team({ content }: { content: TContent }) {
 
   return (
     <section className="w-screen bg-teamwork-secondary-orange ">
-      <div className="container relative mx-auto px-4 py-14">
-        <div className="hidden sm:block h-full w-16 absolute top-0 right-0 bg-gradient-to-r from-teamwork-secondary-orange/0 via-teamwork-secondary-orange/40 to-teamwork-secondary-orange/100 "></div>
-        <div className="pb-4">
+      <div className="container mx-auto  py-14">
+        <div className="px-5 md:px-10 pb-4">
           <h1 className="pb-10">Vårt team</h1>
           <ul className="flex gap-4 pb-4">
             {locations.map((loc) => (
@@ -107,7 +109,9 @@ export default function Team({ content }: { content: TContent }) {
             ))}
           </ul>
         </div>
-        <div className=" sm:overflow-x-scroll pb-5 sm:pr-40 flex flex-col sm:flex-row gap-2 items-center">
+        <div
+          style={{ scrollbarWidth: "none" }}
+          className="sm:w-screen sm:overflow-x-auto pb-5 sm:pl-5 md:pl-10 sm:pr-40 flex flex-col sm:flex-row gap-4 items-center">
           {filteredContent.map(
             (item: TContentItem, index: number) => (
               <TeamMemberCard
@@ -122,6 +126,12 @@ export default function Team({ content }: { content: TContent }) {
               />
             )
           )}
+        </div>
+        <div className="hidden sm:flex w-full justify-end">
+          <div className="flex gap-2 px-5 text-base text-teamwork-primary-orange/60">
+            <FaChevronLeft />
+            <FaChevronRight />
+          </div>
         </div>
       </div>
     </section>
