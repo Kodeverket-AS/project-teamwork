@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { FaUserAltSlash } from "react-icons/fa";
-import { CgScrollH } from "react-icons/cg";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
