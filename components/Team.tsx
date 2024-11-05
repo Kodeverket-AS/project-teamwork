@@ -7,6 +7,10 @@ import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 import { locationsData } from "./dummydata/dummydata";
 
+// TYPE for Location
+type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+// type TLocations = TLocation[];
+
 // TYPE for TeamMemberCard
 type TMemberCardProps = {
   id: number;
@@ -86,7 +90,6 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
 };
 
 // Locations Array
-// const locations = ["Alle", "Oslo", "Trondheim", "Bergen"];
 const locations = locationsData;
 
 // Team component
@@ -100,7 +103,7 @@ export default function Team({ content }: { content: TContent }) {
           (item: TContentItem) => item.location === location
         );
 
-  const handleLocation = (location: string) => {
+  const handleLocation = (location: TLocation) => {
     setLocation(location);
   };
 
