@@ -172,7 +172,7 @@ export default function Team({ content }: { content: TContent }) {
           </div>
         </div>
         <div className="flex w-full justify-end pt-4">
-          <div className="flex gap-2 px-5 text-base text-teamwork-primary-orange/60">
+          <div className="flex gap-2 px-5 text-base">
             <FaChevronLeft />
             <FaChevronRight />
           </div>
