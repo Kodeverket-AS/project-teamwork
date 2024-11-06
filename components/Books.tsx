@@ -9,6 +9,12 @@ import {
   FaUserAltSlash,
 } from "react-icons/fa";
 
+/**
+ * ====================================================
+ * TYPES DECLARATIONS
+ * ====================================================
+ */
+
 // TYPE : BOOK
 type TBook = {
   id: number;
@@ -21,6 +27,12 @@ type TBook = {
 // TYPE : BOOKS (EXPORT DEFAULT)
 type TBooks = TBook[];
 
+/**
+ * ====================================================
+ * COMPONENTS DECLARATIONS
+ * ====================================================
+ */
+
 // MISSING IMAGE REPLACEMENT COMPONENT
 const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
@@ -31,6 +43,7 @@ const ImageMissing = () => (
   </div>
 );
 
+// BOOK
 const Book = ({ title, description, image, url }: TBook) => (
   <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-200 shadow-md hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
@@ -54,6 +67,12 @@ const Book = ({ title, description, image, url }: TBook) => (
     <BuyButton href={url} />
   </div>
 );
+
+/**
+ * ====================================================
+ * MAIN COMPONENT (BOOKS) EXPORT DEFAULT
+ * ====================================================
+ */
 
 export default function Books({ content }: { content: TBooks }) {
   return (
