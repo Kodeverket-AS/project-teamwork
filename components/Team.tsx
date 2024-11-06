@@ -6,12 +6,24 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 import { locationsData } from "./dummydata/dummydata";
+import SectionComponent from "./sections/SectionComponent";
 
-// TYPE for Location
-type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
-// type TLocations = TLocation[];
+/**
+ * ====================================================
+ * DATA DECLARATIONS
+ * ====================================================
+ */
 
-// TYPE for TeamMemberCard
+// LOCATIONS DATA
+const locations = locationsData;
+
+/**
+ * ====================================================
+ * TYPES DECLARATIONS
+ * ====================================================
+ */
+
+// TYPE : TEAM MEMBER CARD
 type TMemberCardProps = {
   id: number;
   name: string;
@@ -22,7 +34,7 @@ type TMemberCardProps = {
   location: string;
 };
 
-// TYPE for Team Component
+// TYPE : TEAM COMPONENT (EXPORT DEFAULT)
 type TContentItem = {
   id: number;
   title: string;
@@ -35,7 +47,16 @@ type TContentItem = {
 };
 type TContent = TContentItem[];
 
-// Component to replace image when image is missing
+// TYPE : LOCATION (INSIDE HANDLELOCATION FUNCTION)
+type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+
+/**
+ * ====================================================
+ * COMPONENTS DECLARATIONS
+ * ====================================================
+ */
+
+// MISSING IMAGE REPLACEMENT COMPONENT
 const ImageMissingComponent = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
@@ -45,7 +66,7 @@ const ImageMissingComponent = () => (
   </div>
 );
 
-// TeamMemberCard component
+// TEAM MEMBER CARD COMPONENT
 const TeamMemberCard: React.FC<TMemberCardProps> = ({
   name,
   role,
@@ -89,10 +110,11 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
   );
 };
 
-// Locations Array
-const locations = locationsData;
-
-// Team component
+/**
+ * ====================================================
+ * MAIN COMPONENT (TEAM) EXPORT DEFAULT
+ * ====================================================
+ */
 export default function Team({ content }: { content: TContent }) {
   const [location, setLocation] = useState(locations[0]);
 
@@ -108,11 +130,9 @@ export default function Team({ content }: { content: TContent }) {
   };
 
   return (
-    <section className="w-screen bg-teamwork-secondary-orange ">
-      <div className="relative container mx-auto pt-20 pb-12 sm:px-0">
-        <div className="absolute left-0 top-0 h-full w-5 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
-        <div className="absolute right-0 top-0 h-full w-5 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
-        <div className="px-5 md:px-10 pb-4 ">
+    <SectionComponent orange={true}>
+      <div className="relative">
+        <div className="">
           <h1 className="pb-10">Vårt team</h1>
           <ul className="appearance-none flex gap-4 pb-4">
             {locations.map((loc) => (
@@ -129,23 +149,27 @@ export default function Team({ content }: { content: TContent }) {
             ))}
           </ul>
         </div>
-        <div
-          style={{ scrollbarWidth: "none" }}
-          className="w-full overflow-x-auto pb-5 sm:pl-5 md:pl-10 pl-4 pr-4 sm:pr-10 flex flex-row gap-4 items-center">
-          {filteredContent.map(
-            (item: TContentItem, index: number) => (
-              <TeamMemberCard
-                id={item.id}
-                location={item.location}
-                key={index}
-                name={item.name}
-                role={item.role}
-                phone={item.phone}
-                email={item.email}
-                image={item.image}
-              />
-            )
-          )}
+        <div className="relative w-screen sm:w-full h-fit py-4 ">
+          <div className="hidden sm:block absolute left-0 top-0 h-full  w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
+          <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
+          <div
+            style={{ scrollbarWidth: "none" }}
+            className="w-full overflow-x-auto pl-2 sm:pl-6 flex flex-row gap-4 items-center">
+            {filteredContent.map(
+              (item: TContentItem, index: number) => (
+                <TeamMemberCard
+                  id={item.id}
+                  location={item.location}
+                  key={index}
+                  name={item.name}
+                  role={item.role}
+                  phone={item.phone}
+                  email={item.email}
+                  image={item.image}
+                />
+              )
+            )}
+          </div>
         </div>
         <div className="flex w-full justify-end pt-4">
           <div className="flex gap-2 px-5 text-base text-teamwork-primary-orange/60">
@@ -154,6 +178,6 @@ export default function Team({ content }: { content: TContent }) {
           </div>
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 }

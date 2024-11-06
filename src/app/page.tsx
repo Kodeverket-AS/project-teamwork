@@ -10,11 +10,12 @@ import { dummydata } from "../../components/dummydata/dummydata";
 
 export default async function Home() {
   const data = await getData();
+  // console.log(data);
   const services = data.services;
   const team = dummydata; // dummydata. Remember to replace and refactor what needs to be.
 
   return (
-    <main className="flex flex-col items-center justify-between w-full overflow-hidden">
+    <main className="flex flex-col items-center justify-between">
       <Hero />
       <Model />
       <Services content={services} />

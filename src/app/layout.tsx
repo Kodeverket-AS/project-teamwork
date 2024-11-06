@@ -31,7 +31,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${ysabeauSC.variable}`}>
-      <body className={`${inter.className} antialiased`}>
+      <body
+        className={`${inter.className} antialiased overflow-x-hidden`}>
         <NavbarAlt />
         {children}
         <ScrollToTopButton />
