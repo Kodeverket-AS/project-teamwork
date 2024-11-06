@@ -13,7 +13,7 @@ export default async function Home() {
   // console.log(data);
   const services = data.services;
   const team = dummyData.teamData; // dummydata. Replace with data when ready
-  //const books = dummyData.booksData; // dummydata. Replace with data when ready
+  const books = dummyData.booksData; // dummydata. Replace with data when ready
 
   return (
     <main className="flex flex-col items-center justify-between">
@@ -21,7 +21,7 @@ export default async function Home() {
       <Model />
       <Services content={services} />
       <Histories />
-      <Books />
+      <Books content={books} />
       <Team content={team} />
       <Success />
     </main>

@@ -122,7 +122,7 @@ export default function Team({ content }: { content: TTeam }) {
       <div className="relative">
         <div className="text-kv-black">
           <h1 className="pb-10">Vårt team</h1>
-          <ul className="appearance-none flex gap-4 pb-4">
+          <ul className="appearance-none flex gap-4">
             {content.locations.map((loc) => (
               <li
                 key={loc}
@@ -137,12 +137,12 @@ export default function Team({ content }: { content: TTeam }) {
             ))}
           </ul>
         </div>
-        <div className="relative w-screen sm:w-full h-fit py-4 ">
-          <div className="hidden sm:block absolute left-0 top-0 h-full  w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
+        <div className="relative w-screen sm:w-full h-fit">
+          <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
           <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
           <div
             style={{ scrollbarWidth: "none" }}
-            className="w-full overflow-x-auto pl-2 sm:pl-6 flex flex-row gap-4 items-center">
+            className="w-full overflow-x-auto py-5 pl-2 sm:pl-6 flex flex-row gap-8 items-center">
             {filteredContent.map((item: TMember, index: number) => (
               <Member
                 id={item.id}

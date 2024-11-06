@@ -1,5 +1,8 @@
 // create some dummydata based on the following structure from type.
 
+type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+type TLocations = TLocation[];
+
 type TMember = {
   id: number;
   name: string;
@@ -7,20 +10,16 @@ type TMember = {
   phone: string;
   email: string;
   image: string;
-  location: string;
+  location: TLocation;
 };
 
 type TBook = {
   id: number;
   title: string;
-  author: string;
-  genre: string;
-  publishedYear: number;
+  description: string;
+  image: string;
+  url: string;
 };
-
-type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
-
-type TLocations = TLocation[];
 
 type TTeamData = {
   members: TMember[];
@@ -98,23 +97,58 @@ export const dummyData: TDummyData = {
     {
       id: 1,
       title: "Book One",
-      author: "Author One",
-      genre: "Fiction",
-      publishedYear: 2001,
+      description: "A fascinating fiction book.",
+      image: "",
+      url: "http://example.com/book-one",
     },
     {
       id: 2,
       title: "Book Two",
-      author: "Author Two",
-      genre: "Non-Fiction",
-      publishedYear: 2002,
+      description: "An insightful non-fiction book.",
+      image: "",
+      url: "http://example.com/book-two",
     },
     {
       id: 3,
       title: "Book Three",
-      author: "Author Three",
-      genre: "Science Fiction",
-      publishedYear: 2003,
+      description: "A thrilling science fiction book.",
+      image: "",
+      url: "http://example.com/book-three",
+    },
+    {
+      id: 4,
+      title: "Book Four",
+      description: "A captivating mystery novel.",
+      image: "",
+      url: "http://example.com/book-four",
+    },
+    {
+      id: 5,
+      title: "Book Five",
+      description: "An inspiring biography.",
+      image: "",
+      url: "http://example.com/book-five",
+    },
+    {
+      id: 6,
+      title: "Book Six",
+      description: "A comprehensive history book.",
+      image: "",
+      url: "http://example.com/book-six",
+    },
+    {
+      id: 7,
+      title: "Book Seven",
+      description: "A detailed science textbook.",
+      image: "",
+      url: "http://example.com/book-seven",
+    },
+    {
+      id: 8,
+      title: "Book Eight",
+      description: "A fun children's book.",
+      image: "",
+      url: "http://example.com/book-eight",
     },
   ],
 };

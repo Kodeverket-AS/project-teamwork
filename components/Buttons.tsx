@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
@@ -45,5 +46,15 @@ export function DownloadButton() {
       className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90">
       Last ned håndboken
     </a>
+  );
+}
+export function BuyButton({ href }: { href: string }) {
+  return (
+    <Link
+      href={href}
+      rel="noopener noreferrer"
+      className="bg-teamwork-primary-orange w-full px-6 py-4 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90">
+      Kjøp nå
+    </Link>
   );
 }
