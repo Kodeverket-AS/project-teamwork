@@ -132,7 +132,7 @@ export default function Team({ content }: { content: TContent }) {
   return (
     <SectionComponent orange={true}>
       <div className="relative">
-        <div className="">
+        <div className="text-kv-black">
           <h1 className="pb-10">Vårt team</h1>
           <ul className="appearance-none flex gap-4 pb-4">
             {locations.map((loc) => (
@@ -141,7 +141,7 @@ export default function Team({ content }: { content: TContent }) {
                 className={`appearance-none py-3 pr-1 underline-offset-4 ${
                   location === loc
                     ? "underline font-semibold"
-                    : "underline-none font-normal"
+                    : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
                 } cursor-pointer`}
                 onClick={() => handleLocation(loc)}>
                 {loc}
