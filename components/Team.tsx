@@ -6,6 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 import SectionComponent from "./sections/SectionComponent";
+import { useHorizontalScroll } from "../customHooks/scrolls";
 
 /**
  * ====================================================
@@ -61,7 +62,7 @@ const Member: React.FC<TMember> = ({
   image,
 }: TMember) => {
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-200 shadow-md hover:shadow-lg">
+    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="h-64 w-full">
         {image ? (
           <Image
@@ -106,6 +107,9 @@ export default function Team({ content }: { content: TTeam }) {
     content.locations[0]
   );
 
+  const { scrollContainerRef, handleScrollHorizontal } =
+    useHorizontalScroll();
+
   const filteredContent =
     location === "Alle"
       ? content.members
@@ -137,10 +141,11 @@ export default function Team({ content }: { content: TTeam }) {
             ))}
           </ul>
         </div>
-        <div className="relative w-screen sm:w-full h-fit">
+        <div className="relative w-full sm:w-full h-fit">
           <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
           <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
           <div
+            ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto py-5 pl-2 sm:pl-6 flex flex-row gap-8 items-center">
             {filteredContent.map((item: TMember, index: number) => (
@@ -159,8 +164,12 @@ export default function Team({ content }: { content: TTeam }) {
         </div>
         <div className="flex w-full justify-end pt-4">
           <div className="flex gap-2 px-5 text-base">
-            <FaChevronLeft />
-            <FaChevronRight />
+            <button onClick={() => handleScrollHorizontal("left")}>
+              <FaChevronLeft />
+            </button>
+            <button onClick={() => handleScrollHorizontal("right")}>
+              <FaChevronRight />
+            </button>
           </div>
         </div>
       </div>

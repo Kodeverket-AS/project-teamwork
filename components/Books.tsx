@@ -8,6 +8,7 @@ import {
   FaChevronRight,
   FaUserAltSlash,
 } from "react-icons/fa";
+import { useHorizontalScroll } from "../customHooks/scrolls";
 
 /**
  * ====================================================
@@ -45,7 +46,7 @@ const ImageMissing = () => (
 
 // BOOK
 const Book = ({ title, description, image, url }: TBook) => (
-  <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-200 shadow-md hover:shadow-lg">
+  <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
         <Image
@@ -75,6 +76,9 @@ const Book = ({ title, description, image, url }: TBook) => (
  */
 
 export default function Books({ content }: { content: TBooks }) {
+  const { scrollContainerRef, handleScrollHorizontal } =
+    useHorizontalScroll();
+
   return (
     <SectionComponent orange={false}>
       <div>
@@ -85,6 +89,7 @@ export default function Books({ content }: { content: TBooks }) {
           <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white to-kv-white/0"></div>
           <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white/0 to-kv-white"></div>
           <div
+            ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto pl-2 py-4 sm:pl-6 flex flex-row gap-8 items-center">
             {content.map((book) => (
@@ -101,8 +106,12 @@ export default function Books({ content }: { content: TBooks }) {
         </div>
         <div className="flex w-full justify-end pt-4">
           <div className="flex gap-2 px-5 text-base">
-            <FaChevronLeft />
-            <FaChevronRight />
+            <button onClick={() => handleScrollHorizontal("left")}>
+              <FaChevronLeft />
+            </button>
+            <button onClick={() => handleScrollHorizontal("right")}>
+              <FaChevronRight />
+            </button>
           </div>
         </div>
       </div>
