@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SectionComponent from "./sections/SectionComponent";
 
-export default function Books() {
+export default function Books({ content }) {
   return (
-    <div className="bg-kv-white h-36 w-full">Here comes the book section</div>
+    <SectionComponent orange={false}>
+      Here comes the book section ooh yeah
+    </SectionComponent>
   );
 }

@@ -5,17 +5,7 @@ import { FaUserAltSlash } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
-import { locationsData } from "./dummydata/dummydata";
 import SectionComponent from "./sections/SectionComponent";
-
-/**
- * ====================================================
- * DATA DECLARATIONS
- * ====================================================
- */
-
-// LOCATIONS DATA
-const locations = locationsData;
 
 /**
  * ====================================================
@@ -23,32 +13,28 @@ const locations = locationsData;
  * ====================================================
  */
 
+// TYPE : LOCATION (INSIDE HANDLELOCATION FUNCTION)
+type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+type TLocations = TLocation[];
+
 // TYPE : TEAM MEMBER CARD
-type TMemberCardProps = {
+type TMember = {
   id: number;
   name: string;
   role: string;
   phone: string;
   email: string;
   image: string;
-  location: string;
+  location: TLocation;
 };
 
 // TYPE : TEAM COMPONENT (EXPORT DEFAULT)
-type TContentItem = {
-  id: number;
-  title: string;
-  name: string;
-  role: string;
-  phone: string;
-  email: string;
-  image: string;
-  location: string;
-};
-type TContent = TContentItem[];
+type TMembers = TMember[];
 
-// TYPE : LOCATION (INSIDE HANDLELOCATION FUNCTION)
-type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
+type TTeam = {
+  members: TMembers;
+  locations: TLocations;
+};
 
 /**
  * ====================================================
@@ -57,7 +43,7 @@ type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
  */
 
 // MISSING IMAGE REPLACEMENT COMPONENT
-const ImageMissingComponent = () => (
+const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
     <p className="text-xs transition-all group-hover:text-sm">
@@ -67,13 +53,13 @@ const ImageMissingComponent = () => (
 );
 
 // TEAM MEMBER CARD COMPONENT
-const TeamMemberCard: React.FC<TMemberCardProps> = ({
+const Member: React.FC<TMember> = ({
   name,
   role,
   phone,
   email,
   image,
-}: TMemberCardProps) => {
+}: TMember) => {
   return (
     <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-200 shadow-md hover:shadow-lg">
       <div className="h-64 w-full">
@@ -86,7 +72,7 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
             className="w-full h-full bg-slate-300"
           />
         ) : (
-          <ImageMissingComponent />
+          <ImageMissing />
         )}
       </div>
 
@@ -115,14 +101,16 @@ const TeamMemberCard: React.FC<TMemberCardProps> = ({
  * MAIN COMPONENT (TEAM) EXPORT DEFAULT
  * ====================================================
  */
-export default function Team({ content }: { content: TContent }) {
-  const [location, setLocation] = useState(locations[0]);
+export default function Team({ content }: { content: TTeam }) {
+  const [location, setLocation] = useState<TLocation>(
+    content.locations[0]
+  );
 
   const filteredContent =
-    location === locations[0]
-      ? content
-      : content.filter(
-          (item: TContentItem) => item.location === location
+    location === "Alle"
+      ? content.members
+      : content.members.filter(
+          (item: TMember) => item.location === location
         );
 
   const handleLocation = (location: TLocation) => {
@@ -135,7 +123,7 @@ export default function Team({ content }: { content: TContent }) {
         <div className="text-kv-black">
           <h1 className="pb-10">Vårt team</h1>
           <ul className="appearance-none flex gap-4 pb-4">
-            {locations.map((loc) => (
+            {content.locations.map((loc) => (
               <li
                 key={loc}
                 className={`appearance-none py-3 pr-1 underline-offset-4 ${
@@ -155,20 +143,18 @@ export default function Team({ content }: { content: TContent }) {
           <div
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto pl-2 sm:pl-6 flex flex-row gap-4 items-center">
-            {filteredContent.map(
-              (item: TContentItem, index: number) => (
-                <TeamMemberCard
-                  id={item.id}
-                  location={item.location}
-                  key={index}
-                  name={item.name}
-                  role={item.role}
-                  phone={item.phone}
-                  email={item.email}
-                  image={item.image}
-                />
-              )
-            )}
+            {filteredContent.map((item: TMember, index: number) => (
+              <Member
+                id={item.id}
+                location={item.location}
+                key={index}
+                name={item.name}
+                role={item.role}
+                phone={item.phone}
+                email={item.email}
+                image={item.image}
+              />
+            ))}
           </div>
         </div>
         <div className="flex w-full justify-end pt-4">
