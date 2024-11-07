@@ -8,13 +8,13 @@ const dataset = process.env.NEXT_PUBLIC_DATASET;
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
 
 // Default queries
-const queries = {
-  "books": "*[_type == 'books'] { 'image':image.asset->url, ... }",
-  "customers": "*[_type == 'customers'] { 'image':image.asset->url, ... }",
-  "feedback": "*[_type == 'feedback'] { 'image':image.asset->url, ... }",
-  "services": "*[_type == 'services'] { 'image':image.asset->url, ... }",
-  "team": "*[_type == 'team'] { 'image':image.asset->url, ... }",
-};
+const QUERY = `{
+  "books": *[_type == 'books'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
+  "customers": *[_type == 'customers'] { ..., "image": {"url": image.asset->url }},
+  "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url }},
+  "services": *[_type == 'services'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
+  "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url }},
+}`;
 
 // Export sanity hook
 export function useSanity() {
@@ -24,9 +24,14 @@ export function useSanity() {
   useEffect(() => {
     if (data) return
     async function getData() {
-      console.log("fetched")
-      setData(await client.fetch(JSON.stringify(queries)));
+      try {
+        const result = await client.fetch(QUERY)
+        setData(result)
+      } catch (err) {
+        console.log(err)
+      }
     }
+
 
     getData();
   }, [data, client])
