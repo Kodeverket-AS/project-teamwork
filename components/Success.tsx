@@ -104,55 +104,46 @@ const ImageMissing = () => (
   </div>
 );
 
-// const ReviewCard = ({
-//   name,
-//   role,
-//   rating,
-//   title,
-//   review,
-//   image,
-// }: TReviewCardProps) => {
-//   return (
-//     <div className="w-full sm:w-2/3 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start shadow-md">
-//       <div className="w-full">
-//         <div className="pb-4">
-//           <Rating rating={rating} />
-//         </div>
-//         <div>
-//           <h2 className="font-semibold text-xl">{title}</h2>
-//           <p className="">{review}</p>
-//         </div>
-//         <div className="text-xs flex items-center gap-2 py-4">
-//           <p className="font-semibold">{name}</p>
-//           <p>|</p>
-//           <p>{role}</p>
-//         </div>
-//       </div>
-//       <div className="hidden sm:block h-56 w-40 rounded-md overflow-hidden">
-//         {image ? (
-//           <Image
-//             src={image}
-//             alt="Success"
-//             width={200}
-//             height={200}
-//             className="w-full h-full bg-slate-300"
-//           />
-//         ) : (
-//           <ImageMissing />
-//         )}
-//       </div>
-//       <div className="sm:hidden h-20 w-20 rounded-full overflow-hidden">
-//         <Image
-//           src={image}
-//           alt="Success"
-//           width={200}
-//           height={200}
-//           className="w-full h-full bg-slate-300"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
+const ReviewCard = ({
+  name,
+  role,
+  rating,
+  title,
+  review,
+  image,
+}: TReviewCardProps) => {
+  return (
+    <div className="w-full sm:w-2/3 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
+      <div className="w-full">
+        <div className="pb-4 text-2xl text-teamwork-primary-orange">
+          <Rating rating={rating} />
+        </div>
+        <div>
+          <h2 className="font-semibold ">{title}</h2>
+          <p>{review}</p>
+        </div>
+        <div className="text-xs flex items-center gap-2 py-4">
+          <p className="font-semibold">{name}</p>
+          <p>|</p>
+          <p>{role}</p>
+        </div>
+      </div>
+      <div className="hidden sm:block h-full w-48 rounded-md overflow-hidden">
+        {image ? (
+          <Image
+            src={image}
+            alt="Success"
+            width={200}
+            height={200}
+            className="w-full h-full bg-slate-300"
+          />
+        ) : (
+          <ImageMissing />
+        )}
+      </div>
+    </div>
+  );
+};
 
 const ReviewCardV2 = ({
   name,
@@ -211,7 +202,7 @@ export default function Success() {
           style={{ scrollbarWidth: "none" }}
           className="flex overflow-x-scroll gap-10 py-8">
           {dummyData.map((data) => (
-            <ReviewCardV2
+            <ReviewCard
               key={data.id}
               name={data.name}
               role={data.role}
@@ -224,13 +215,17 @@ export default function Success() {
         </div>
       </div>
       <div className="flex w-full justify-end pt-4">
-        <div className="flex gap-2 px-5 text-base">
+        <div className="hidden sm:flex gap-2 px-5 text-base">
           <button onClick={() => handleScrollHorizontal("left")}>
             <FaChevronLeft />
           </button>
           <button onClick={() => handleScrollHorizontal("right")}>
             <FaChevronRight />
           </button>
+        </div>
+        <div className="flex sm:hidden gap-2 px-5 text-base">
+          <FaChevronLeft />
+          <FaChevronRight />
         </div>
       </div>
     </SectionComponent>
