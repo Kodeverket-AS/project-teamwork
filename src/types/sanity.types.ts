@@ -116,6 +116,7 @@ export type Services = {
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
+    url?: string
     _type: 'image'
   }
 }
@@ -185,6 +186,7 @@ export type Books = {
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
+    url?: string
     _type: 'image'
   }
 }
