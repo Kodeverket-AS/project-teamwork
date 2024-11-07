@@ -108,7 +108,7 @@ export default function Team({ content }: { content: TTeam }) {
   );
 
   const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll();
+    useHorizontalScroll({ scrollLength: 1 });
 
   const filteredContent =
     location === "Alle"

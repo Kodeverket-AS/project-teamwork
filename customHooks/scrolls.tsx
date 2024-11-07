@@ -9,12 +9,17 @@ import { useRef } from "react";
  */
 
 // HORIZONTAL SCROLL HOOK FOR BUTTON SCROLLING
-export const useHorizontalScroll = () => {
+export const useHorizontalScroll = ({
+  scrollLength,
+}: {
+  scrollLength: number;
+}) => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const handleScrollHorizontal = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = scrollContainerRef.current.clientWidth;
+      const scrollAmount =
+        scrollContainerRef.current.clientWidth * scrollLength;
       if (direction === "left") {
         scrollContainerRef.current.scrollBy({
           left: -scrollAmount,

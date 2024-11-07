@@ -77,7 +77,7 @@ const Book = ({ title, description, image, url }: TBook) => (
 
 export default function Books({ content }: { content: TBooks }) {
   const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll();
+    useHorizontalScroll({ scrollLength: 1 });
 
   return (
     <SectionComponent orange={false}>
