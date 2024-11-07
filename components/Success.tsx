@@ -128,7 +128,7 @@ const ReviewCard = ({
           <p>{role}</p>
         </div>
       </div>
-      <div className="hidden sm:block h-full w-48 rounded-md overflow-hidden">
+      <div className="hidden sm:block h-full w-56 rounded-md overflow-hidden">
         {image ? (
           <Image
             src={image}
@@ -140,46 +140,6 @@ const ReviewCard = ({
         ) : (
           <ImageMissing />
         )}
-      </div>
-    </div>
-  );
-};
-
-const ReviewCardV2 = ({
-  name,
-  role,
-  rating,
-  title,
-  review,
-  image,
-}: TReviewCardProps) => {
-  return (
-    <div className="w-full sm:w-3/5 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start shadow-md">
-      <div className="w-full">
-        <div className="flex items-center gap-4 pb-8">
-          <div className="h-16 w-16 rounded-full overflow-hidden">
-            {image ? (
-              <Image
-                src={image}
-                alt="Success"
-                width={200}
-                height={200}
-                className="w-full h-full bg-slate-300"
-              />
-            ) : (
-              <ImageMissing />
-            )}
-          </div>
-          <div className="text-sm">
-            <h3 className="font-semibold">{name}</h3>
-            <p>{role}</p>
-          </div>
-        </div>
-        <div>
-          <Rating rating={rating} />
-          <h2 className="font-semibold ">{title}</h2>
-          <p className="">{review}</p>
-        </div>
       </div>
     </div>
   );
