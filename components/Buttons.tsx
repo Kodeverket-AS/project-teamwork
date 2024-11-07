@@ -48,13 +48,31 @@ export function DownloadButton() {
     </a>
   );
 }
-export function BuyButton({ href }: { href: string }) {
+
+type TBasicButton = {
+  href: string;
+  wFit?: boolean;
+  text?: string;
+};
+
+export function BuyButton({ href, wFit, text }: TBasicButton) {
   return (
     <Link
       href={href}
       rel="noopener noreferrer"
-      className="bg-teamwork-primary-orange w-full px-6 py-4 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90">
-      Kjøp nå
+      className={`bg-teamwork-primary-orange min-w-48 ${wFit ? "w-fit" : "w-full"} px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90`}>
+      {text || "Kjøp nå"}
+    </Link>
+  );
+}
+// w-full < sm > w-fit
+export function ButtonResponsive({ href, text }: TBasicButton) {
+  return (
+    <Link
+      href={href}
+      rel="noopener noreferrer"
+      className={`bg-teamwork-primary-orange min-w-48 w-full sm:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90`}>
+      {text || "Les mer"}
     </Link>
   );
 }
