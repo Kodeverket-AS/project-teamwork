@@ -4,6 +4,7 @@ import "./globals.css";
 import { ScrollToTopButton } from "../../components/Buttons";
 import { NavbarAlt } from "../../components/navigation/NavBar";
 import Footer from "../../components/Footer";
+import { SanityProvider } from "@/context/sanity";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavbarAlt />
-        {children}
+        <SanityProvider>
+          {children}
+        </SanityProvider>
         <ScrollToTopButton />
         <Footer />
       </body>
