@@ -80,9 +80,9 @@ export type Team = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name: string
-  title: string
-  department: Array<string>
+  name?: string
+  title?: string
+  department?: Array<string>
   tlf?: string
   email?: string
   image?: {
@@ -94,9 +94,9 @@ export type Team = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
-    url?: string,
-    alt?: string,
   }
 }
 
@@ -106,7 +106,7 @@ export type Services = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title: string
+  title?: string
   content?: string
   image?: {
     asset?: {
@@ -117,8 +117,8 @@ export type Services = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -129,10 +129,10 @@ export type Feedback = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title: string
-  rating: 1 | 2 | 3 | 4 | 5
+  title?: string
+  rating?: 1 | 2 | 3 | 4 | 5
   content?: string
-  name: string
+  name?: string
   workTitle?: string
   company?: string
   image?: {
@@ -144,9 +144,9 @@ export type Feedback = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
-    url?: string,
-    alt?: string,
   }
 }
 
@@ -167,6 +167,8 @@ export type Customers = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -189,8 +191,8 @@ export type Books = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     url?: string
+    alt?: string
     _type: 'image'
   }
 }
