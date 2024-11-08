@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Hamburger from "./Hamburger";
-import LogoDark from "../../public/LogoDark.svg";
+import LogoDark from "@/public/LogoDark.svg";
 
 export function NavbarAlt() {
   return (
