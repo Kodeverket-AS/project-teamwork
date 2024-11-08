@@ -20,9 +20,9 @@ import { useHorizontalScroll } from "../customHooks/scrolls";
 type TBook = {
   id: number;
   title: string;
-  description: string;
+  desc: string;
   image: string;
-  url: string;
+  url?: string;
 };
 
 // TYPE : BOOKS (EXPORT DEFAULT)
@@ -45,7 +45,7 @@ const ImageMissing = () => (
 );
 
 // BOOK
-const Book = ({ title, description, image, url }: TBook) => (
+const Book = ({ title, desc, image, url }: TBook) => (
   <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
@@ -63,9 +63,16 @@ const Book = ({ title, description, image, url }: TBook) => (
 
     <div className="pt-2 pb-12 leading-relaxed">
       <h3>{title}</h3>
-      <p>{description}</p>
+      <p className="line-clamp-1">{desc}</p>
     </div>
-    <BuyButton href={url} />
+    {url ? (
+      <BuyButton href={url} />
+    ) : (
+      <BuyButton
+        href="#"
+        text="Link mangler"
+      />
+    )}
   </div>
 );
 
@@ -97,7 +104,7 @@ export default function Books({ content }: { content: TBooks }) {
                 id={book.id}
                 key={book.id}
                 title={book.title}
-                description={book.description}
+                desc={book.desc}
                 image={book.image}
                 url={book.url}
               />

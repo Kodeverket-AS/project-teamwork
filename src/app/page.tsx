@@ -10,10 +10,10 @@ import { dummyData } from "../../components/dummydata/dummydata";
 
 export default async function Home() {
   const data = await getData();
-  // console.log(data);
+  console.log(data.books[0].url);
   const services = data.services;
   const team = dummyData.teamData; // dummydata. Replace with data when ready
-  const books = dummyData.booksData; // dummydata. Replace with data when ready
+  const books = data.books; // dummydata. Replace with data when ready
 
   return (
     <main className="flex flex-col items-center justify-between">
