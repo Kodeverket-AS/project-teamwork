@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import ModelImage from "../public/ModelImage.jpg";
-import Icon1 from "../public/icons/bxl_graphql.svg";
-import Icon2 from "../public/icons/octicon_graph-24.svg";
-import Icon3 from "../public/icons/material-symbols-light_handshake-outline.svg";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import ModelImage from "@/public/ModelImage.jpg";
+import Icon1 from "@/public/icons/bxl_graphql.svg";
+import Icon2 from "@/public/icons/octicon_graph-24.svg";
+import Icon3 from "@/public/icons/material-symbols-light_handshake-outline.svg";
 
 export default function Model() {
   const [show1, setShow1] = useState(false);
