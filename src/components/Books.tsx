@@ -9,6 +9,8 @@ import {
   FaUserAltSlash,
 } from "react-icons/fa";
 import { useHorizontalScroll } from "@/hooks/scrolls";
+import { Books as tBooks } from "@/types/sanity.types";
+import placeholderImage from '@/assets/placeholder.jpg'
 
 /**
  * ====================================================
@@ -45,13 +47,13 @@ const ImageMissing = () => (
 );
 
 // BOOK
-const Book = ({ title, description, image, url }: TBook) => (
+const Book = ({ title, desc, image, url }: tBooks) => (
   <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
         <Image
-          src={image}
-          alt={title}
+          src={image.url ?? placeholderImage}
+          alt={image.alt ?? title}
           width={100}
           height={100}
           className="w-full h-full bg-slate-300"
@@ -63,9 +65,9 @@ const Book = ({ title, description, image, url }: TBook) => (
 
     <div className="pt-2 pb-12 leading-relaxed">
       <h3>{title}</h3>
-      <p>{description}</p>
+      <p>{desc}</p>
     </div>
-    <BuyButton href={url} />
+    <BuyButton href={url ?? ""} />
   </div>
 );
 
@@ -75,7 +77,7 @@ const Book = ({ title, description, image, url }: TBook) => (
  * ====================================================
  */
 
-export default function Books({ content }: { content: TBooks }) {
+export default function Books({ content }: { content: tBooks[] }) {
   const { scrollContainerRef, handleScrollHorizontal } =
     useHorizontalScroll({ scrollLength: 1 });
 
@@ -93,14 +95,7 @@ export default function Books({ content }: { content: TBooks }) {
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto pl-2 py-4 sm:pl-6 flex flex-row gap-8 items-center">
             {content.map((book) => (
-              <Book
-                id={book.id}
-                key={book.id}
-                title={book.title}
-                description={book.description}
-                image={book.image}
-                url={book.url}
-              />
+              <Book key={book._id} {...book} />
             ))}
           </div>
         </div>
