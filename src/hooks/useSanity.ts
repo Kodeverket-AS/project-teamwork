@@ -10,10 +10,10 @@ const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
 // Default queries
 const QUERY = `{
   "books": *[_type == 'books'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
-  "customers": *[_type == 'customers'] { ..., "image": {"url": image.asset->url }},
-  "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url }},
+  "customers": *[_type == 'customers'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
+  "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
   "services": *[_type == 'services'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
-  "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url }},
+  "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
 }`;
 
 // Export sanity hook
