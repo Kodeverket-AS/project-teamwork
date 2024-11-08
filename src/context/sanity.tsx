@@ -3,7 +3,7 @@ import { createContext, ReactNode, useContext } from 'react';
 import { SanityData } from '@/types/sanity.types';
 import { useSanity } from '@/hooks/useSanity';
 
-// Initiate context
+// Initiate a context
 const SanityContext = createContext<SanityData>({
   books: [],
   customers: [],
@@ -12,7 +12,11 @@ const SanityContext = createContext<SanityData>({
   team: []
 });
 
-// export context consumer
+/**
+ * Hook for using SanityData, you can destructure return object to use specific fields.
+ * While arrays might be empty, they are always defined.
+ * @returns {SanityData}
+ */
 export const useSanityContext = () => {
   const sanity: SanityData = useContext(SanityContext);
   return { ...sanity };
