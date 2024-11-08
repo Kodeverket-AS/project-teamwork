@@ -4,7 +4,13 @@ import { SanityData } from '@/types/sanity.types';
 import { useSanity } from '@/hooks/useSanity';
 
 // Initiate context
-const SanityContext = createContext<SanityData>(null);
+const SanityContext = createContext<SanityData>({
+  books: [],
+  customers: [],
+  feedback: [],
+  services: [],
+  team: []
+});
 
 // export context consumer
 export const useSanityContext = () => {

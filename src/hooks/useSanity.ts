@@ -18,7 +18,13 @@ const QUERY = `{
 
 // Export sanity hook
 export function useSanity() {
-  const [ data, setData ] = useState<SanityData>(null);
+  const [ data, setData ] = useState<SanityData>({
+    books: [],
+    customers: [],
+    feedback: [],
+    services: [],
+    team: []
+  });
   const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
 
   useEffect(() => {
@@ -31,7 +37,6 @@ export function useSanity() {
         console.log(err)
       }
     }
-
 
     getData();
   }, [data, client])
