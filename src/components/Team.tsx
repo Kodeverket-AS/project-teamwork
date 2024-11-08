@@ -4,88 +4,43 @@ import Image from "next/image";
 import { FaUserAltSlash } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionComponent from "./sections/SectionComponent";
 import { useHorizontalScroll } from "@/hooks/scrolls";
+import { useSanityContext } from "@/context/sanity";
+import { Team } from "@/types/sanity.types";
+import placeholderImage from '@/assets/placeholder.jpg'
 
-/**
- * ====================================================
- * TYPES DECLARATIONS
- * ====================================================
- */
-
-// TYPE : LOCATION (INSIDE HANDLELOCATION FUNCTION)
-type TLocation = "Alle" | "Oslo" | "Trondheim" | "Bergen";
-type TLocations = TLocation[];
-
-// TYPE : TEAM MEMBER CARD
-type TMember = {
-  id: number;
-  name: string;
-  role: string;
-  phone: string;
-  email: string;
-  image: string;
-  location: TLocation;
-};
-
-// TYPE : TEAM COMPONENT (EXPORT DEFAULT)
-type TMembers = TMember[];
-
-type TTeam = {
-  members: TMembers;
-  locations: TLocations;
-};
-
-/**
- * ====================================================
- * COMPONENTS DECLARATIONS
- * ====================================================
- */
-
-// MISSING IMAGE REPLACEMENT COMPONENT
-const ImageMissing = () => (
-  <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
-    <FaUserAltSlash className="text-3xl" />
-    <p className="text-xs transition-all group-hover:text-sm">
-      Image not available
-    </p>
-  </div>
-);
-
-// TEAM MEMBER CARD COMPONENT
-const Member: React.FC<TMember> = ({
-  name,
-  role,
-  phone,
-  email,
-  image,
-}: TMember) => {
+const Member = ({ name, title, tlf, email, image }: Team) => {
   return (
     <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="h-64 w-full">
         {image ? (
           <Image
-            src={image}
-            alt={name}
+            src={image.src ?? placeholderImage}
+            alt={name ?? "placeholder image"}
             width={100}
             height={100}
             className="w-full h-full bg-slate-300"
           />
         ) : (
-          <ImageMissing />
+          <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
+            <FaUserAltSlash className="text-3xl" />
+            <p className="text-xs transition-all group-hover:text-sm">
+              Image not available
+            </p>
+          </div>
         )}
       </div>
-
       <div className="w-full h-full p-4 pb-6">
         <div className="pb-4">
           <h2 className="text-2xl">{name}</h2>
-          <p className="text-sm">{role}</p>
+          <p className="text-sm">{title}</p>
         </div>
         <div className="text-xs text-kv-black/70 leading-relaxed">
           <div className="flex gap-1">
             <b>Mobil:</b>
-            <p>{phone}</p>
+            <p>{tlf}</p>
           </div>
           <div className="flex gap-1">
             <b>Epost:</b>
@@ -97,29 +52,21 @@ const Member: React.FC<TMember> = ({
   );
 };
 
-/**
- * ====================================================
- * MAIN COMPONENT (TEAM) EXPORT DEFAULT
- * ====================================================
- */
-export default function Team({ content }: { content: TTeam }) {
-  const [location, setLocation] = useState<TLocation>(
-    content.locations[0]
-  );
 
-  const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll({ scrollLength: 1 });
+export default function TeamMembers() {
+  const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 1 });
+  const [ locations, setLocations ] = useState<string[]>([])
+  const [ location, setLocation ] = useState<string>('alle');
+  const { team } = useSanityContext()
 
-  const filteredContent =
-    location === "Alle"
-      ? content.members
-      : content.members.filter(
-          (item: TMember) => item.location === location
-        );
+  const filteredContent = location === "Alle" ? team : team &&  team.filter((item) => item.department?.includes(location));
 
-  const handleLocation = (location: TLocation) => {
-    setLocation(location);
-  };
+  useEffect(() => {
+    if (!team) return
+    // Generate list of selectable work locations
+    const flatten = team.map(member => member.department).flat().filter(item => item !== undefined)
+    setLocations([...new Set(flatten), 'alle'])
+  }, [team])
 
   return (
     <SectionComponent orange={true}>
@@ -127,7 +74,7 @@ export default function Team({ content }: { content: TTeam }) {
         <div className="text-kv-black">
           <h1 className="pb-10">Vårt team</h1>
           <ul className="appearance-none flex gap-4">
-            {content.locations.map((loc) => (
+            {locations.map((loc) => (
               <li
                 key={loc}
                 className={`appearance-none py-3 pr-1 underline-offset-4 ${
@@ -135,7 +82,7 @@ export default function Team({ content }: { content: TTeam }) {
                     ? "underline font-semibold"
                     : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
                 } cursor-pointer`}
-                onClick={() => handleLocation(loc)}>
+                onClick={() => setLocation(loc)}>
                 {loc}
               </li>
             ))}
@@ -148,17 +95,8 @@ export default function Team({ content }: { content: TTeam }) {
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto py-5 pl-2 sm:pl-6 flex flex-row gap-8 items-center">
-            {filteredContent.map((item: TMember, index: number) => (
-              <Member
-                id={item.id}
-                location={item.location}
-                key={index}
-                name={item.name}
-                role={item.role}
-                phone={item.phone}
-                email={item.email}
-                image={item.image}
-              />
+            {filteredContent && filteredContent.map(item => (
+              <Member key={item._id} {...item}/>
             ))}
           </div>
         </div>
