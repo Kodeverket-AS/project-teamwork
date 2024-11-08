@@ -95,6 +95,7 @@ export type Team = {
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     _type: 'image'
+    src: string,
   }
 }
 
