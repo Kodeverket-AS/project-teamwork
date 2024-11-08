@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 import SectionComponent from "./sections/SectionComponent";
-import { useHorizontalScroll } from "../customHooks/scrolls";
+import { useHorizontalScroll } from "@/hooks/scrolls";
 
 /**
  * ====================================================

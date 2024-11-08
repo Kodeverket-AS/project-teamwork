@@ -9,7 +9,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa6";
-import { useHorizontalScroll } from "../customHooks/scrolls";
+import { useHorizontalScroll } from "@/hooks/scrolls";
 import { FaUserAltSlash } from "react-icons/fa";
 
 // DUMMY DATA
