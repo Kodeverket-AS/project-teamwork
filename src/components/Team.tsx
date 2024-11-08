@@ -17,7 +17,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
       <div className="h-64 w-full">
         {image ? (
           <Image
-            src={image.src ?? placeholderImage}
+            src={image.url ?? placeholderImage}
             alt={name ?? "placeholder image"}
             width={100}
             height={100}
@@ -53,20 +53,19 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
 };
 
 
-export default function TeamMembers() {
+export default function TeamMembers({ content }: { content: Team[] }) {
   const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 1 });
   const [ locations, setLocations ] = useState<string[]>([])
   const [ location, setLocation ] = useState<string>('alle');
-  const { team } = useSanityContext()
 
-  const filteredContent = location === "Alle" ? team : team &&  team.filter((item) => item.department?.includes(location));
+  const filteredContent = location === "Alle" ? content : content &&  content.filter((item) => item.department?.includes(location));
 
   useEffect(() => {
-    if (!team) return
+    if (!content) return
     // Generate list of selectable work locations
-    const flatten = team.map(member => member.department).flat().filter(item => item !== undefined)
+    const flatten = content.map(member => member.department).flat().filter(item => item !== undefined)
     setLocations(['alle', ...new Set(flatten)])
-  }, [team])
+  }, [content])
 
   return (
     <SectionComponent orange={true}>
