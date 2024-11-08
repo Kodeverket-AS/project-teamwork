@@ -84,6 +84,11 @@ const ReviewCard = ({
   );
 };
 
+/**
+ * ====================================================
+ * SUCCESS (EXPORT DEFAULT)
+ * ====================================================
+ */
 export default function Success() {
   const { scrollContainerRef, handleScrollHorizontal } =
     useHorizontalScroll({ scrollLength: 0.6 });
