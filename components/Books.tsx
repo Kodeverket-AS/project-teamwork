@@ -8,25 +8,9 @@ import {
   FaChevronRight,
   FaUserAltSlash,
 } from "react-icons/fa";
-import { useHorizontalScroll } from "../src/hooks/scrolls";
-
-/**
- * ====================================================
- * TYPES DECLARATIONS
- * ====================================================
- */
-
-// TYPE : BOOK
-type TBook = {
-  id: number;
-  title: string;
-  desc: string;
-  image: string;
-  url?: string;
-};
-
-// TYPE : BOOKS (EXPORT DEFAULT)
-type TBooks = TBook[];
+import { useHorizontalScroll } from "@/hooks/scrolls";
+import { Books } from "@/types/sanity.types";
+import { useSanityContext } from "@/context/sanity";
 
 /**
  * ====================================================
@@ -45,16 +29,16 @@ const ImageMissing = () => (
 );
 
 // BOOK
-const Book = ({ title, desc, image, url }: TBook) => (
+const Book = ({ title, desc, image, url }: Books) => (
   <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
         <Image
-          src={image}
-          alt={title}
+          src={image.url ?? ""}
+          alt={title ?? "placeholder image"}
           width={100}
           height={100}
-          className="w-full h-full bg-slate-300"
+          className="object-cover w-full h-full bg-slate-300"
         />
       ) : (
         <ImageMissing />
@@ -82,9 +66,10 @@ const Book = ({ title, desc, image, url }: TBook) => (
  * ====================================================
  */
 
-export default function Books({ content }: { content: TBooks }) {
+export default function BooksSection() {
   const { scrollContainerRef, handleScrollHorizontal } =
     useHorizontalScroll({ scrollLength: 1 });
+  const { books } = useSanityContext();
 
   return (
     <SectionComponent orange={false}>
@@ -99,16 +84,18 @@ export default function Books({ content }: { content: TBooks }) {
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto pl-2 py-4 sm:pl-6 flex flex-row gap-8 items-center">
-            {content.map((book) => (
-              <Book
-                id={book.id}
-                key={book.id}
-                title={book.title}
-                desc={book.desc}
-                image={book.image}
-                url={book.url}
-              />
-            ))}
+            {books ? (
+              books.map((book: Books) => (
+                <Book
+                  key={book._id}
+                  {...book}
+                />
+              ))
+            ) : (
+              <div className="text-kv-black">
+                Ingen bøker tilgjengelig
+              </div>
+            )}
           </div>
         </div>
         <div className="flex w-full justify-end pt-4">
