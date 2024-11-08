@@ -58,7 +58,7 @@ export default function TeamMembers({ content }: { content: Team[] }) {
   const [ locations, setLocations ] = useState<string[]>([])
   const [ location, setLocation ] = useState<string>('alle');
 
-  const filteredContent = location === "Alle" ? content : content &&  content.filter((item) => item.department?.includes(location));
+  const filteredContent = location === "alle" ? content : content &&  content.filter((item) => item.department?.includes(location));
 
   useEffect(() => {
     if (!content) return
