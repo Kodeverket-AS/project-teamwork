@@ -60,7 +60,7 @@ export default function TeamMembers() {
   const { team } = useSanityContext();
 
   const filteredContent =
-    location === "Alle"
+    location === "alle"
       ? team
       : team &&
         team.filter((item) => item.department?.includes(location));
@@ -72,7 +72,7 @@ export default function TeamMembers() {
       .map((member) => member.department)
       .flat()
       .filter((item) => item !== undefined);
-    setLocations([...new Set(flatten), "alle"]);
+    setLocations(["alle", ...new Set(flatten)]);
   }, [team]);
 
   return (
@@ -84,7 +84,7 @@ export default function TeamMembers() {
             {locations.map((loc) => (
               <li
                 key={loc}
-                className={`appearance-none py-3 pr-1 underline-offset-4 ${
+                className={`appearance-none py-3 pr-1 underline-offset-4 capitalize ${
                   location === loc
                     ? "underline font-semibold"
                     : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
