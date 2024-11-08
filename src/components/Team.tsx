@@ -65,7 +65,7 @@ export default function TeamMembers() {
     if (!team) return
     // Generate list of selectable work locations
     const flatten = team.map(member => member.department).flat().filter(item => item !== undefined)
-    setLocations([...new Set(flatten), 'alle'])
+    setLocations(['alle', ...new Set(flatten)])
   }, [team])
 
   return (
