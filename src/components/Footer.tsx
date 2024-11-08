@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaLinkedinIn, FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
-import LogoLight from "../public/LogoLight.svg";
+import LogoLight from "@/public/LogoLight.svg";
 
 export default function Footer() {
   return (
