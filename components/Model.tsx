@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import ModelImage from "../public/ModelImage.jpg";
@@ -20,9 +19,10 @@ export default function Model() {
         <div
           className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
             show1 ? "h-fit" : "h-14 overflow-hidden"
-          }`}
-        >
-          <button onClick={() => setShow1(!show1)} className="w-full">
+          }`}>
+          <button
+            onClick={() => setShow1(!show1)}
+            className="w-full">
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
@@ -42,20 +42,19 @@ export default function Model() {
             </div>
           </button>
           <p>
-            Here comes a text about this subject, please change this before the
-            page goes live it's critical and btw I need to fill the space all
-            the time you have to leave the space. Just leave me alone, I know
-            what to do.
+            Here comes a text about this subject, please change this
+            before the page goes live it's critical and btw I need to
+            fill the space all the time you have to leave the space.
+            Just leave me alone, I know what to do.
           </p>
         </div>
         <div
           className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
-            show2
-              ? "h-fit"
-              : "h-14 overflow-hidden"
-          }`}
-        >
-          <button onClick={() => setShow2(!show2)} className="w-full">
+            show2 ? "h-fit" : "h-14 overflow-hidden"
+          }`}>
+          <button
+            onClick={() => setShow2(!show2)}
+            className="w-full">
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
@@ -75,18 +74,20 @@ export default function Model() {
             </div>
           </button>
           <p>
-            Medarbeiderskap er Nordens ideal for samspill og ansvarsdeling på
-            arbeidsplassen. Sammen med professor Stefan Tengblad i Göteborg, har
-            Johan Velten bidratt til å gi begrepet et konkret meningsinnhold og
-            verktøy for praktisk utvikling.
+            Medarbeiderskap er Nordens ideal for samspill og
+            ansvarsdeling på arbeidsplassen. Sammen med professor
+            Stefan Tengblad i Göteborg, har Johan Velten bidratt til å
+            gi begrepet et konkret meningsinnhold og verktøy for
+            praktisk utvikling.
           </p>
         </div>
         <div
           className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
             show3 ? "h-fit" : "h-14 overflow-hidden"
-          }`}
-        >
-          <button onClick={() => setShow3(!show3)} className="w-full">
+          }`}>
+          <button
+            onClick={() => setShow3(!show3)}
+            className="w-full">
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
@@ -106,10 +107,10 @@ export default function Model() {
             </div>
           </button>
           <p>
-            Here comes a text about this subject, please change this before the
-            page goes live it's critical and btw I need to fill the space all
-            the time you have to leave the space. Just leave me alone, I know
-            what to do.
+            Here comes a text about this subject, please change this
+            before the page goes live it's critical and btw I need to
+            fill the space all the time you have to leave the space.
+            Just leave me alone, I know what to do.
           </p>
         </div>
       </div>
