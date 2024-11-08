@@ -13,15 +13,15 @@ import { Team } from "../src/types/sanity.types";
 
 const Member = ({ name, title, tlf, email, image }: Team) => {
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
-      <div className="h-64 w-full">
+    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
+      <div className="h-80 w-full">
         {image ? (
           <Image
             src={image.url ?? ""}
             alt={name ?? "placeholder image"}
             width={100}
             height={100}
-            className="w-full h-full bg-slate-300"
+            className="object-cover w-full h-full bg-slate-300"
           />
         ) : (
           <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
