@@ -13,15 +13,15 @@ import { Team } from "../src/types/sanity.types";
 
 const Member = ({ name, title, tlf, email, image }: Team) => {
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-md min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
-      <div className="h-80 w-full">
+    <div className="bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
+      <div className="h-72 sm:h-80 w-full overflow-hidden">
         {image ? (
           <Image
             src={image.url ?? ""}
             alt={name ?? "placeholder image"}
             width={100}
             height={100}
-            className="object-cover w-full h-full bg-slate-300"
+            className="object-cover w-full h-full bg-slate-300 scale-100 hover:scale-105 transition-all duration-500"
           />
         ) : (
           <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
@@ -84,7 +84,7 @@ export default function TeamMembers() {
             {locations.map((loc) => (
               <li
                 key={loc}
-                className={`appearance-none py-3 pr-1 underline-offset-4 capitalize ${
+                className={`appearance-none py-3 underline-offset-4 capitalize ${
                   location === loc
                     ? "underline font-semibold"
                     : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
@@ -101,7 +101,7 @@ export default function TeamMembers() {
           <div
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
-            className="w-full overflow-x-auto py-5 pl-2 sm:pl-6 flex flex-row gap-8 items-center">
+            className="w-full overflow-x-auto py-5 pl-4 pr-8 flex flex-row gap-8 items-center">
             {filteredContent &&
               filteredContent.map((item) => (
                 <Member

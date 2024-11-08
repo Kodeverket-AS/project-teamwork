@@ -77,13 +77,13 @@ export default function BooksSection() {
         <div className="text-kv-black">
           <h1 className="pb-10">Våre bøker</h1>
         </div>
-        <div className="relative w-screen sm:w-full h-fit py-4 ">
+        <div className="relative w-full h-fit py-4 ">
           <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white to-kv-white/0"></div>
           <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white/0 to-kv-white"></div>
           <div
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
-            className="w-full overflow-x-auto pl-2 py-4 sm:pl-6 flex flex-row gap-8 items-center">
+            className="w-full overflow-x-auto pl-4 pr-4 py-4 sm:pl-6 flex flex-row gap-8 items-center">
             {books ? (
               books.map((book: Books) => (
                 <Book
