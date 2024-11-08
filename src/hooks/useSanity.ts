@@ -16,8 +16,16 @@ const QUERY = `{
   "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
 }`;
 
-// Export sanity hook
+/**
+ * useSanity is a custom hook for fetching data from api.sanity.io, 
+ * you can descructure return object to unpack whichever dataset you need from SanityData
+ * @returns {SanityData} Object with keys: books, customers, feedback, services and team
+ */
 export function useSanity() {
+  // create a connection with sanity.io
+  const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
+
+  // Store data from sanity after a successfull fetch
   const [ data, setData ] = useState<SanityData>({
     books: [],
     customers: [],
@@ -25,8 +33,8 @@ export function useSanity() {
     services: [],
     team: []
   });
-  const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
 
+  // Fetch data when client connection has been established
   useEffect(() => {
     if (data) return
     async function getData() {
