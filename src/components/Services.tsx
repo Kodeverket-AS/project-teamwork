@@ -1,5 +1,6 @@
 "use client";
 
+import { Services as tServices } from "@/types/sanity.types";
 import SectionComponent from "./sections/SectionComponent";
 
 interface Contents {
@@ -11,7 +12,7 @@ interface Contents {
 export default function Services({
   content,
 }: {
-  content: Contents[];
+  content: tServices[];
 }) {
   return (
     <SectionComponent orange={false}>
