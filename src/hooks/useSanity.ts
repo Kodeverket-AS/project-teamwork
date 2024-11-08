@@ -10,17 +10,31 @@ const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
 // Default queries
 const QUERY = `{
   "books": *[_type == 'books'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
-  "customers": *[_type == 'customers'] { ..., "image": {"url": image.asset->url }},
-  "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url }},
+  "customers": *[_type == 'customers'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
+  "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
   "services": *[_type == 'services'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
-  "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url }},
+  "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
 }`;
 
-// Export sanity hook
+/**
+ * useSanity is a custom hook for fetching data from api.sanity.io, 
+ * you can descructure return object to unpack whichever dataset you need from SanityData
+ * @returns {SanityData} Object with keys: books, customers, feedback, services and team
+ */
 export function useSanity() {
-  const [ data, setData ] = useState<SanityData>(null);
+  // create a connection with sanity.io
   const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
 
+  // Store data from sanity after a successfull fetch
+  const [ data, setData ] = useState<SanityData>({
+    books: [],
+    customers: [],
+    feedback: [],
+    services: [],
+    team: []
+  });
+
+  // Fetch data when client connection has been established
   useEffect(() => {
     if (data) return
     async function getData() {
@@ -31,7 +45,6 @@ export function useSanity() {
         console.log(err)
       }
     }
-
 
     getData();
   }, [data, client])

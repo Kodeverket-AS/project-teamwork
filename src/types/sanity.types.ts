@@ -94,6 +94,8 @@ export type Team = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -115,8 +117,8 @@ export type Services = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -142,6 +144,8 @@ export type Feedback = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -163,6 +167,8 @@ export type Customers = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -173,7 +179,7 @@ export type Books = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
+  title: string
   desc?: string
   url?: string
   image?: {
@@ -185,8 +191,8 @@ export type Books = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     url?: string
+    alt?: string
     _type: 'image'
   }
 }
@@ -273,4 +279,4 @@ export type SanityData = {
   feedback: Feedback[]
   customers: Customers[]
   books: Books[]
-} | null
+}
