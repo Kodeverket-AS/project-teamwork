@@ -179,7 +179,7 @@ export type Books = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
+  title: string
   desc?: string
   url?: string
   image?: {
@@ -279,4 +279,4 @@ export type SanityData = {
   feedback: Feedback[]
   customers: Customers[]
   books: Books[]
-} | null
+}
