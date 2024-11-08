@@ -6,14 +6,14 @@ import Histories from "../../components/Histories";
 import Team from "../../components/Team";
 import Success from "../../components/Success";
 import { getData } from "../../sanity/getData";
-import { dummyData } from "../../components/dummydata/dummydata";
+// import { dummyData } from "../../components/dummydata/dummydata";
 
 export default async function Home() {
   const data = await getData();
-  console.log(data.books[0].url);
+  console.log(data.team);
   const services = data.services;
-  const team = dummyData.teamData; // dummydata. Replace with data when ready
-  const books = data.books; // dummydata. Replace with data when ready
+  // const team = data.team;
+  const books = data.books;
 
   return (
     <main className="flex flex-col items-center justify-between">
@@ -22,7 +22,7 @@ export default async function Home() {
       <Services content={services} />
       <Histories />
       <Books content={books} />
-      <Team content={team} />
+      <Team />
       <Success />
     </main>
   );

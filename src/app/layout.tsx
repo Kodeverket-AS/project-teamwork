@@ -4,6 +4,7 @@ import "./globals.css";
 import { ScrollToTopButton } from "../../components/Buttons";
 import { NavbarAlt } from "../../components/navigation/NavBar";
 import Footer from "../../components/Footer";
+import { SanityProvider } from "@/context/sanity";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased overflow-x-hidden`}>
         <NavbarAlt />
-        {children}
+        <SanityProvider>{children}</SanityProvider>
         <ScrollToTopButton />
         <Footer />
       </body>

@@ -8,7 +8,7 @@ import {
   FaChevronRight,
   FaUserAltSlash,
 } from "react-icons/fa";
-import { useHorizontalScroll } from "../customHooks/scrolls";
+import { useHorizontalScroll } from "../src/hooks/scrolls";
 
 /**
  * ====================================================
