@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Hero from "../../components/Hero";
 import Model from "../../components/Model";
 import Services from "../../components/Services";
@@ -14,7 +15,7 @@ export default async function Home() {
     <main className="flex flex-col items-center justify-between w-full">
       <Hero />
       <Model />
-      <Services content={services}/>
+      <Services content={services} />
       <Histories />
       <Books />
       <Team />
