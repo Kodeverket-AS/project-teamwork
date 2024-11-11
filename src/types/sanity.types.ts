@@ -130,7 +130,7 @@ export type Feedback = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  rating?: 1 | 2 | 3 | 4 | 5;
+  rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
   content?: string;
   name?: string;
   workTitle?: string;

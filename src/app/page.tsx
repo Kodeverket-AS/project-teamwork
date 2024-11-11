@@ -12,8 +12,6 @@ export default async function Home() {
   const data = await getData();
   // console.log(data);
   const services = data.services;
-  // const team = data.team;
-  // const books = data.books;
 
   return (
     <main className="flex flex-col items-center justify-between">

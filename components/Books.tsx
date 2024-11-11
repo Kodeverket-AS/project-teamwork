@@ -8,7 +8,7 @@ import {
   FaChevronRight,
   FaUserAltSlash,
 } from "react-icons/fa";
-import { useHorizontalScroll } from "@/hooks/scrolls";
+import { useHorizontalScroll } from "@/hooks/useScrolls";
 import { Books } from "@/types/sanity.types";
 import { useSanityContext } from "@/context/sanity";
 
@@ -72,7 +72,9 @@ export default function BooksSection() {
   const { books } = useSanityContext();
 
   return (
-    <SectionComponent orange={false}>
+    <SectionComponent
+      orange={false}
+      fade>
       <div>
         <div className="text-kv-black">
           <h1 className="pb-10">Våre bøker</h1>

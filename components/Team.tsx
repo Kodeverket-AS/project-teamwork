@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import SectionComponent from "./sections/SectionComponent";
-import { useHorizontalScroll } from "../src/hooks/scrolls";
+import { useHorizontalScroll } from "../src/hooks/useScrolls";
 import { useSanityContext } from "../src/context/sanity";
 import { Team } from "../src/types/sanity.types";
 // import placeholderImage from "@/assets/placeholder.jpg";
@@ -101,7 +101,9 @@ export default function TeamMembers() {
   }, [team]);
 
   return (
-    <SectionComponent orange={true}>
+    <SectionComponent
+      orange={true}
+      fade>
       <div className="relative">
         <div className="text-kv-black">
           <h1 className="pb-10">Vårt team</h1>

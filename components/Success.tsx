@@ -9,7 +9,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa6";
-import { useHorizontalScroll } from "@/hooks/scrolls";
+import { useHorizontalScroll } from "@/hooks/useScrolls";
 import { FaUserAltSlash } from "react-icons/fa";
 import { Feedback } from "@/types/sanity.types";
 import { useSanityContext } from "@/context/sanity";
@@ -52,14 +52,16 @@ const ReviewCard = ({
   image,
 }: Feedback) => {
   return (
-    <div className="w-full sm:w-2/3 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
+    <div className="w-full sm:w-3/5 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="w-full">
         <div className="pb-4 text-2xl text-teamwork-primary-orange">
           <Rating rating={rating ?? 0} />
         </div>
         <div>
           <h2 className="font-semibold ">{title}</h2>
-          <p>{content}</p>
+          <p className="text-sm sm:text-base text-pretty max-w-[65ch]">
+            {content}
+          </p>
         </div>
         <div className="text-xs flex items-center gap-2 py-4">
           <p className="font-semibold">{name}</p>
@@ -96,18 +98,20 @@ export default function Success() {
   const { feedback } = useSanityContext();
 
   return (
-    <SectionComponent orange={false}>
+    <SectionComponent
+      orange={false}
+      fade>
       <div className="text-kv-black">
         <h1 className="pb-10">Suksess</h1>
-        <p className="max-w-[60ch]">
+        {/* <p className="max-w-[60ch] text-pretty">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
           earum unde placeat ad recusandae? Repellat aperiam vel
           exercitationem, corrupti quas accusantium iure.
-        </p>
+        </p> */}
         <div
           ref={scrollContainerRef}
           style={{ scrollbarWidth: "none" }}
-          className="flex overflow-x-scroll gap-10 py-8">
+          className="flex overflow-x-scroll gap-12 py-8">
           {feedback?.map((feedback: Feedback) => (
             <ReviewCard
               key={feedback._id}
