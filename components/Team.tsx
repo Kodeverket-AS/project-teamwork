@@ -27,7 +27,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
       });
   };
   return (
-    <div className="bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
+    <div className="group bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="h-72 sm:h-80 w-full overflow-hidden">
         {image ? (
           <Image
@@ -35,7 +35,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
             alt={name ?? "placeholder image"}
             width={100}
             height={100}
-            className="object-cover w-full h-full bg-slate-300 scale-100 hover:scale-105 transition-all duration-500"
+            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 transition-all duration-1000"
           />
         ) : (
           <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
