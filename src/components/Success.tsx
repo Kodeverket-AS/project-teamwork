@@ -11,66 +11,9 @@ import {
 } from "react-icons/fa6";
 import { useHorizontalScroll } from "@/hooks/scrolls";
 import { FaUserAltSlash } from "react-icons/fa";
+import { Feedback } from "@/types/sanity.types";
 
-// DUMMY DATA
-const dummyData = [
-  {
-    id: 0,
-    name: "John Doe",
-    role: "CEO",
-    rating: 4,
-    title: "Revitaliserte arbeidsmetoden min",
-    review:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "",
-  },
-  {
-    id: 1,
-    name: "Jane Doe",
-    role: "CTO",
-    rating: 5,
-    title: "Revitaliserte arbeidsmetoden min",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "",
-  },
-  {
-    id: 2,
-    name: "Joan Qwerty",
-    role: "CFO",
-    rating: 4.5,
-    title: "Revitaliserte arbeidsmetoden min",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "",
-  },
-  {
-    id: 3,
-    name: "Joan Qwerty",
-    role: "CFO",
-    rating: 4.5,
-    title: "Revitaliserte arbeidsmetoden min",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "",
-  },
-  {
-    id: 4,
-    name: "Joan Qwerty",
-    role: "CFO",
-    rating: 4.5,
-    title: "Revitaliserte arbeidsmetoden min",
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    image: "",
-  },
-];
-
-type TRatingProps = {
-  rating: number;
-};
-
-const Rating = ({ rating }: TRatingProps) => {
+const Rating = ({ rating }: { rating: number}) => {
   const stars = [];
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
@@ -88,64 +31,43 @@ const Rating = ({ rating }: TRatingProps) => {
   return <div className="flex gap-1">{stars}</div>;
 };
 
-type TReviewCardProps = {
-  name: string;
-  role: string;
-  rating: number;
-  title: string;
-  review: string;
-  image: string;
-};
-
-// MISSING IMAGE REPLACEMENT COMPONENT
-const ImageMissing = () => (
-  <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
-    <FaUserAltSlash className="text-3xl" />
-  </div>
-);
-
-const ReviewCard = ({
-  name,
-  role,
-  rating,
-  title,
-  review,
-  image,
-}: TReviewCardProps) => {
+const ReviewCard = ({ title, content, rating, name, workTitle, company, image }: Feedback) => {
   return (
     <div className="w-full sm:w-2/3 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="w-full">
         <div className="pb-4 text-2xl text-teamwork-primary-orange">
-          <Rating rating={rating} />
+          <Rating rating={rating ?? 0} />
         </div>
         <div>
           <h2 className="font-semibold ">{title}</h2>
-          <p>{review}</p>
+          <p>{content}</p>
         </div>
         <div className="text-xs flex items-center gap-2 py-4">
           <p className="font-semibold">{name}</p>
           <p>|</p>
-          <p>{role}</p>
+          <p>{workTitle}, {company}</p>
         </div>
       </div>
       <div className="hidden sm:block h-full w-56 rounded-md overflow-hidden">
-        {image ? (
+        {image?.url ? (
           <Image
-            src={image}
+            src={image.url}
             alt="Success"
             width={200}
             height={200}
             className="w-full h-full bg-slate-300"
           />
         ) : (
-          <ImageMissing />
+          <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
+            <FaUserAltSlash className="text-3xl" />
+          </div>
         )}
       </div>
     </div>
   );
 };
 
-export default function Success() {
+export default function Success({ content }: { content: Feedback[]}) {
   const { scrollContainerRef, handleScrollHorizontal } =
     useHorizontalScroll({ scrollLength: 0.6 });
   return (
@@ -161,16 +83,8 @@ export default function Success() {
           ref={scrollContainerRef}
           style={{ scrollbarWidth: "none" }}
           className="flex overflow-x-scroll gap-10 py-8">
-          {dummyData.map((data) => (
-            <ReviewCard
-              key={data.id}
-              name={data.name}
-              role={data.role}
-              rating={data.rating}
-              title={data.title}
-              review={data.review}
-              image={data.image}
-            />
+          {content.map((data) => (
+            <ReviewCard key={data._id} {...data} />
           ))}
         </div>
       </div>
