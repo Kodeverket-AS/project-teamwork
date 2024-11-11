@@ -12,6 +12,20 @@ import { Team } from "../src/types/sanity.types";
 // import placeholderImage from "@/assets/placeholder.jpg";
 
 const Member = ({ name, title, tlf, email, image }: Team) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopied(true);
+        // alert("Epost kopiert til utklippstavlen");
+        setTimeout(() => setCopied(false), 2500); // Hide the message after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  };
   return (
     <div className="bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="h-72 sm:h-80 w-full overflow-hidden">
@@ -44,7 +58,18 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
           </div>
           <div className="flex gap-1">
             <b>Epost:</b>
-            <p>{email}</p>
+            {copied ? (
+              <span className="text-white bg-green-800 px-2 w-full">
+                Epost kopiert!
+              </span>
+            ) : (
+              <p
+                onClick={() => copyToClipboard(email)}
+                className="cursor-pointer hover:underline underline-offset-2 "
+                title="Klikk for å kopiere epost">
+                {email}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -96,8 +121,8 @@ export default function TeamMembers() {
           </ul>
         </div>
         <div className="relative w-full sm:w-full h-fit">
-          <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
-          <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
+          <div className="hidden z-10 sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
+          <div className="hidden z-10 sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
           <div
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}

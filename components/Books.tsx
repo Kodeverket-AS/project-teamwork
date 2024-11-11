@@ -30,7 +30,7 @@ const ImageMissing = () => (
 
 // BOOK
 const Book = ({ title, desc, image, url }: Books) => (
-  <div className="bg-white p-4 text-kv-black overflow-hidden rounded-xl min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
+  <div className="bg-white p-4 text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
         <Image
@@ -38,7 +38,7 @@ const Book = ({ title, desc, image, url }: Books) => (
           alt={title ?? "placeholder image"}
           width={100}
           height={100}
-          className="object-cover w-full h-full bg-slate-300"
+          className="object-cover w-full h-full bg-slate-300 scale-100 hover:scale-105 transition-all duration-500"
         />
       ) : (
         <ImageMissing />

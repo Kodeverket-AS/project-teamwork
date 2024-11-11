@@ -84,7 +84,7 @@ export type Team = {
   title?: string;
   department?: Array<string>;
   tlf?: string;
-  email?: string;
+  email: string;
   image?: {
     asset?: {
       _ref: string;

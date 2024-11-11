@@ -67,7 +67,7 @@ const ReviewCard = ({
           <p>{workTitle}</p>
         </div>
       </div>
-      <div className="hidden sm:block h-full w-56 rounded-md overflow-hidden">
+      <div className="hidden sm:block h-full w-56 rounded-sm overflow-hidden">
         {image ? (
           <Image
             src={image.url ?? ""}
