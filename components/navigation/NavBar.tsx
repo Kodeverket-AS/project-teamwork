@@ -3,13 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import Hamburger from "./Hamburger";
+import { BookingButton } from "../Buttons";
 import LogoDark from "../../public/LogoDark.svg";
 
 export function NavbarAlt() {
   return (
     <nav className="w-full">
-      <div className="flex items-center justify-between 3xl:justify-around">
-        <div className="flex flex-row items-end p-4">
+      <div className="flex items-center justify-between 3xl:justify-around px-4">
+        <div className="flex flex-row items-end py-4">
           <Link href="/" aria-label="Gå til landingssiden">
             <Image
               className="w-28 lg:w-36"
@@ -51,9 +52,12 @@ export function NavbarAlt() {
               Suksess
             </Link>
           </div>
-          <div className="px-4 md:hidden">
-            <Hamburger />
-          </div>
+        </div>
+        <div className="pl-14 md:pl-0">
+          <BookingButton />
+        </div>
+        <div className="px-4 md:hidden">
+          <Hamburger />
         </div>
       </div>
     </nav>
