@@ -39,7 +39,7 @@ export function ScrollToTopButton() {
 
 export function DownloadButton() {
   return (
-    <a href="" rel="noopener noreferrer" className="bg-teamwork-primary-orange w-full md:w-fit px-3 py-2 rounded text-center">
+    <a href="" rel="noopener noreferrer" className="bg-teamwork-primary-orange w-full md:w-fit px-3 py-2 rounded text-center hover:bg-kv-white focus:bg-kv-white hover:border hover:border-teamwork-primary-orange focus:border focus:border-teamwork-primary-orange">
       Last ned håndboken
     </a>
   )
@@ -50,7 +50,7 @@ export function BookingButton() {
     <a
       href=""
       rel="noopener noreferrer"
-      className="bg-teamwork-primary-orange w-fit px-3 py-2 rounded text-center flex flex-row"
+      className="bg-teamwork-primary-orange w-fit px-3 py-2 rounded text-center flex flex-row hover:bg-kv-white focus:bg-kv-white hover:border hover:border-teamwork-primary-orange focus:border focus:border-teamwork-primary-orange"
     >
       <FaCalendarAlt className="w-5 h-5" />
       <p className="hidden md:block md:pl-2">Møtebooking</p>
