@@ -1,7 +1,7 @@
 "use client";
 import { createContext, ReactNode, useContext } from "react";
 import { SanityData } from "@/types/sanity.types";
-import { useSanity } from "@/hooks/useSanityHooks";
+import { useSanity } from "@/hooks/useSanity";
 
 // Initiate a context
 const SanityContext = createContext<SanityData>({
