@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
 import { useEffect, useState } from "react";
-import { SanityData } from '@/types/sanity.types';
+import { SanityData } from "@/types/sanity.types";
 
 // Import enviroment variables
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
@@ -16,42 +16,29 @@ const QUERY = `{
   "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
 }`;
 
-/**
- * useSanity is a custom hook for fetching data from api.sanity.io, 
- * you can descructure return object to unpack whichever dataset you need from SanityData
- * @returns {SanityData} Object with keys: books, customers, feedback, services and team
- */
+// Export sanity hook
 export function useSanity() {
-  // create a connection with sanity.io
-  const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
-
-  // Store data from sanity after a successfull fetch
-  const [ data, setData ] = useState<SanityData>({
-    books: [],
-    customers: [],
-    feedback: [],
-    services: [],
-    team: []
+  const [data, setData] = useState<SanityData>(null);
+  const client = createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: false,
   });
 
-  // Fetch data when client connection has been established
   useEffect(() => {
-    if (data) return
+    if (data) return;
     async function getData() {
       try {
-        const result = await client.fetch(QUERY)
-        setData(result)
+        const result = await client.fetch(QUERY);
+        setData(result);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
 
     getData();
-  }, [data, client])
+  }, [data, client]);
 
   return { data };
-};
-
-
-
-
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 
 interface Contents {
@@ -14,7 +13,7 @@ interface ServicesProps {
   content: Contents[];
 }
 
-export default function Services({ content }:ServicesProps) {
+export default function Services({ content }: ServicesProps) {
   return (
     <div className="bg-kv-white w-full flex flex-col px-5 md:px-10 py-14 gap-10">
       <h2>Tjenester</h2>
