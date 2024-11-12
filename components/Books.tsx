@@ -70,6 +70,7 @@ export default function BooksSection() {
   const { scrollContainerRef, handleScrollHorizontal } =
     useHorizontalScroll({ scrollLength: 1 });
   const { books } = useSanityContext();
+  console.log("Test console log books: ", books);
 
   return (
     <SectionComponent
