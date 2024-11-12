@@ -7,5 +7,5 @@ export async function getData() {
     "feedback": *[_type == 'feedback'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
     "services": *[_type == 'services'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
     "team": *[_type == 'team'] { ..., "image": {"url": image.asset->url, "alt": image.alt }},
-  }`);
-}
+  }`)
+};
