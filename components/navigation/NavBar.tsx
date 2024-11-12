@@ -24,28 +24,28 @@ export function NavbarAlt() {
         <div>
           <div className="hidden h-auto p-4 md:block">
             <Link
-              href="/"
+              href="#model"
               aria-label="gå til denne seksjonen og les om modellen vår"
               className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
               Modell
             </Link>
             <Link
-              href="/"
+              href="#services"
               aria-label="gå til denne seksjonen for å lese om tjenestene våre"
               className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
               Tjenester
             </Link>
             <Link
-              href="/"
+              href="#histories"
               aria-label="gå til denne seksjonen for å lese om noen av historiene om oss"
               className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
               Historier
             </Link>
             <Link
-              href="/"
+              href="#success"
               aria-label="gå til denne seksjonen for å lese om suksessen våre kunder har hatt"
               className="px-4 font-bold md:portrait:px-2 lg:px-4 text-kv-black md:hover:underline"
             >
