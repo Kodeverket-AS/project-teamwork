@@ -1,10 +1,117 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import SectionComponent from "./sections/SectionComponent";
+import { BuyButton } from "./Buttons";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaUserAltSlash,
+} from "react-icons/fa";
+import { useHorizontalScroll } from "@/hooks/useScrolls";
+import { Books } from "@/types/sanity.types";
+import { useSanityContext } from "@/context/sanity";
 
-export default function Books() {
+/**
+ * ====================================================
+ * COMPONENTS DECLARATIONS
+ * ====================================================
+ */
+
+// MISSING IMAGE REPLACEMENT COMPONENT
+const ImageMissing = () => (
+  <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
+    <FaUserAltSlash className="text-3xl" />
+    <p className="text-xs transition-all group-hover:text-sm">
+      Image not available
+    </p>
+  </div>
+);
+
+// BOOK
+const Book = ({ title, desc, image, url }: Books) => (
+  <div className="group bg-white p-4 text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
+    <div className="h-64 w-full rounded-md overflow-hidden">
+      {image ? (
+        <Image
+          src={image.url ?? ""}
+          alt={title ?? "placeholder image"}
+          width={100}
+          height={100}
+          className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 transition-all duration-1000"
+        />
+      ) : (
+        <ImageMissing />
+      )}
+    </div>
+
+    <div className="pt-2 pb-12 leading-relaxed">
+      <h3>{title}</h3>
+      <p className="line-clamp-1">{desc}</p>
+    </div>
+    {url ? (
+      <BuyButton href={url} />
+    ) : (
+      <BuyButton
+        href="#"
+        text="Link mangler"
+      />
+    )}
+  </div>
+);
+
+/**
+ * ====================================================
+ * MAIN COMPONENT (BOOKS) EXPORT DEFAULT
+ * ====================================================
+ */
+
+export default function BooksSection() {
+  const { scrollContainerRef, handleScrollHorizontal } =
+    useHorizontalScroll({ scrollLength: 1 });
+  const { books } = useSanityContext();
+  console.log("Test console log books: ", books);
+
   return (
-    <div className="bg-kv-white h-36 w-full">Here comes the book section</div>
+    <SectionComponent
+      orange={false}
+      fade>
+      <div>
+        <div className="text-kv-black">
+          <h1 className="pb-10">Våre bøker</h1>
+        </div>
+        <div className="relative w-full h-fit py-4 ">
+          <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white to-kv-white/0"></div>
+          <div className="hidden sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white/0 to-kv-white"></div>
+          <div
+            ref={scrollContainerRef}
+            style={{ scrollbarWidth: "none" }}
+            className="w-full overflow-x-auto pl-4 pr-4 py-4 sm:pl-6 flex flex-row gap-8 items-center">
+            {books ? (
+              books.map((book: Books) => (
+                <Book
+                  key={book._id}
+                  {...book}
+                />
+              ))
+            ) : (
+              <div className="text-kv-black">
+                Ingen bøker tilgjengelig
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex w-full justify-end pt-4">
+          <div className="flex gap-2 px-5 text-base">
+            <button onClick={() => handleScrollHorizontal("left")}>
+              <FaChevronLeft />
+            </button>
+            <button onClick={() => handleScrollHorizontal("right")}>
+              <FaChevronRight />
+            </button>
+          </div>
+        </div>
+      </div>
+    </SectionComponent>
   );
 }

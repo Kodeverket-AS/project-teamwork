@@ -26,6 +26,7 @@ export function useSanity() {
   const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
 
   // Store data from sanity after a successfull fetch
+  const [ fetched, setFetched ] = useState(false)
   const [ data, setData ] = useState<SanityData>({
     books: [],
     customers: [],
@@ -36,18 +37,19 @@ export function useSanity() {
 
   // Fetch data when client connection has been established
   useEffect(() => {
-    if (data) return
+    if (fetched) return
     async function getData() {
       try {
         const result = await client.fetch(QUERY)
         setData(result)
+        setFetched(true)
       } catch (err) {
         console.log(err)
       }
     }
 
     getData();
-  }, [data, client])
+  }, [data, fetched, client])
 
   return { data };
 };
