@@ -101,7 +101,7 @@ export default function Success() {
     <SectionComponent
       orange={false}
       fade>
-      <div className="text-kv-black">
+      <div id="success" className="text-kv-black">
         <h1 className="pb-10">Suksess</h1>
         {/* <p className="max-w-[60ch] text-pretty">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed

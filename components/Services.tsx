@@ -15,7 +15,7 @@ interface ServicesProps {
 
 export default function Services({ content }: ServicesProps) {
   return (
-    <div className="bg-kv-white w-full flex flex-col px-5 md:px-10 py-14 gap-10">
+    <div id="services" className="bg-kv-white w-full flex flex-col px-5 md:px-10 py-14 gap-10">
       <h2>Tjenester</h2>
       <div className="flex flex-col md:flex-row w-full md:justify-between gap-10">
         <div className="w-full h-60 shadow md:w-1/3 md:h-72 overflow-hidden p-3 hover:border-teamwork-primary-orange hover:border group">

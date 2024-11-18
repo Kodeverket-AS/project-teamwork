@@ -33,7 +33,7 @@ export default function Histories() {
     <SectionComponent
       orange={true}
       fade>
-      <div>
+      <div id="histories">
         <h1 className="pb-10">Historier</h1>
         <div className="flex flex-col sm:h-[528px] sm:flex-row gap-4 sm:gap-10 justify-between items-center">
           <div className="w-full h-64 sm:h-full rounded-lg overflow-hidden">
