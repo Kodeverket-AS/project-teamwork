@@ -29,7 +29,7 @@ export default function Hero() {
           forskning, redefinerer lederskap ved å styrke engasjement,
           produktivitet og bærekraftig suksess.
         </p>
-        <DownloadButton />
+        <DownloadButton href="/newsletter" text="Last ned håndbok"/>
       </div>
     </div>
   );
