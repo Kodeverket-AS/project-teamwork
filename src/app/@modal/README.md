@@ -48,7 +48,42 @@ If you want to create modals using this method we can use our case as an example
     );
   }
   ```
-</details><br>
+</details>
+<details>
+  <summary>Code example: @/components/modal/container.tsx (without comments)</summary>
+
+  ```ts filename="container.tsx"
+  import { type ElementRef, useEffect, useRef } from 'react';
+  import { useRouter } from 'next/navigation';
+  import { createPortal } from 'react-dom';
+
+  export function ModalContainer({ children }: { children: React.ReactNode }) {
+    const router = useRouter();
+    const dialogRef = useRef<ElementRef<'dialog'>>(null);
+
+    useEffect(() => {
+      if (!dialogRef.current?.open) {
+        dialogRef.current?.showModal();
+      }
+    }, []);
+
+    function onDismiss() {
+      router.back();
+    }
+
+    return createPortal(
+      <div className="fixed inset-0">
+        <dialog ref={dialogRef} className="p-2" onClose={onDismiss}>
+          {children}
+          <button onClick={onDismiss} className="absolute top-4 right-4 w-12 h-12 bg-slate-800" />
+        </dialog>
+      </div>,
+      document.getElementById('modal-root')!
+    );
+  }
+  ```
+</details>
+<br>
 
 afterwards we can create a portal target in our base `layout.tsx` file
 <details>
