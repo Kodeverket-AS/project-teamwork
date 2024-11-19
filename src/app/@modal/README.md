@@ -175,20 +175,25 @@ If you want to know more you can read more about [navigation states](https://nex
 
 ## Final project tree
 When we have added all the required files we should end up with a project that contains at least these files.
+```
+app/
+├─ components/
+│  ├─ modal/
+│  │  ├─ container.tsx    <- Our modal wrapper
+├─ @modal/
+│  ├─ default.tsx         <- React component that returns null (safeguard).
+|  ├─ [bookId]/
+│  │  ├─ (.)books/        <- Must start with (.) and then the same folder name as our page.
+│  │  │  ├─ page.tsx      <- Place dynamic content inside here that you want to render inside Modal component
+├─ books/
+│  ├─ [bookId]/
+│  │  ├─ page.tsx         <- Place dynamic content inside here that will show on a full page
+├─ layout.tsx
+├─ page.tsx
+```
+<br><br>
 
-  ```
- app/
-  ├─ components/
-  │  ├─ modal/
-  │  │  ├─ container.tsx    <- Our modal wrapper
-  ├─ @modal/
-  │  ├─ default.tsx         <- React component that returns null (safeguard).
-  |  ├─ [bookId]/
-  │  │  ├─ (.)books/        <- Must start with (.) and then the same folder name as our page.
-  │  │  │  ├─ page.tsx      <- Place dynamic content inside here that you want to render inside Modal component
-  ├─ books/
-  │  ├─ [bookId]/
-  │  │  ├─ page.tsx         <- Place dynamic content inside here that will show on a full page
-  ├─ layout.tsx
-  ├─ page.tsx
-  ```
+## You suck at explaining
+Here, Kyle is much better at explaining than I am. click to watch this youtube video instead
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/zDZBKEvU8b0/0.jpg)](https://www.youtube.com/watch?v=zDZBKEvU8b0)
