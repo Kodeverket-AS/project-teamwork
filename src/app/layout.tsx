@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         siteName: "teamwork.no",
         images: [
             {
-                url: "/LogoLight.svg", // Legg denne bildefilen i public-mappen
+                url: "/LogoLight.svg",
                 width: 1200,
                 height: 630,
                 alt: "Teamwork Logo",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Teamwork",
         description: "Beskrivelse for Twitter",
-        images: ["/LogoLight.svg"], // Legg denne bildefilen i public-mappen
+        images: ["/LogoLight.svg"],
     },
 };
 
