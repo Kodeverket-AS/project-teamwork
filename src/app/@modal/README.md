@@ -1,7 +1,7 @@
 # Parallel-routes and interception
 In this document I'll show you how you can create your own modals. I highly recommend that you read the documentation for [parallel-routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#modals) and [intercepting-routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes) before continuing. A minimal example can be found [@nextgram](https://github.com/vercel/nextgram) template from vercel
 
-# Basics
+# Basic implementation
 If you want to create modals using this method we can use our case as an example, this will also show you how to add your own modals in this project. We'll start by creating our modal portal that will wrap around our content
 <details>
   <summary>Code example: @/components/modal/container.tsx</summary>
@@ -68,4 +68,28 @@ afterwards we can create a portal target in our base `layout.tsx` file
     );
   }
   ```
-</details>
+</details><br>
+
+# Thats fine, but how do I use this?
+  We already have a modal for newsletter, but lets add one for each book.
+  first we need to create two directories, one normal for when a user visits the page from an external link, and one when a user clicks on the button to trigger the modal. The triggering action is done when nextjs is already mounted and reacts to a NextLink action.
+  ```
+ app/
+  ├─ components/
+  │  ├─ modal/
+  │  │  ├─ container.tsx <- Our modal wrapper
+  |
+  ├─ @modal/
+  │  ├─ default.tsx <- React component that returns null
+  |  ├─ [bookId]/
+  │  │  ├─ (.)books/ <- Must start with (.) and then the same folder name as our page.
+  │  │  │  ├─ page.tsx <- Place content inside here that you want to render inside Modal component
+  |
+  ├─ books/
+  │  ├─ [bookId]/
+  │  │  ├─ page.tsx <- Place content inside here that will show on a full page
+  |
+  ├─ layout.tsx
+  ├─ page.tsx
+
+  ```
