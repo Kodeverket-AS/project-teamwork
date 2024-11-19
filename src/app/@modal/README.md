@@ -1,7 +1,8 @@
 # Parallel-routes and interception
 In this document I'll show you how you can create your own modals. I highly recommend that you read the documentation for [parallel-routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#modals) and [intercepting-routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes) before continuing. A minimal example can be found [@nextgram](https://github.com/vercel/nextgram) template from vercel
+<br><br>
 
-## Basic implementation
+## Basic implementation for modal
 If you want to create modals using this method we can use our case as an example, this will also show you how to add your own modals in this project. We'll start by creating our modal portal that will wrap around our content
 <details>
   <summary>Code example: @/components/modal/container.tsx</summary>
@@ -85,7 +86,7 @@ If you want to create modals using this method we can use our case as an example
 </details>
 <br>
 
-afterwards we can create a portal target in our base `layout.tsx` file
+Afterwards we must create a portal target in our base `layout.tsx` file. This is done by passing the prop `{ modal }` into `RootLayout`and consumed by adding `{ modal }` and `<div id="modal-root" />` somewhere inside BODY tag. If you're wondering why the prop is called `modal` then its because thats whats our `@modal` folder is called. We could have called it `@somethingelse` and our prop would then be called `{ somethingelse }`.
 <details>
   <summary>Code example: @/app/layout.tsx</summary>
 
@@ -103,7 +104,7 @@ afterwards we can create a portal target in our base `layout.tsx` file
     );
   }
   ```
-</details><br>
+</details><br><br>
 
 ## Thats fine, but how do I use this?
   We already have a modal for newsletter, but lets add one for each book that teamwork page has linked.
@@ -133,8 +134,8 @@ Now comes the easy part, we just have to create pages for our content. This is p
     );
   }
   ```
-</details><br>
-
+</details>
+<br>
 <details>
   <summary>Code example for page: /books/[bookId]/page.tsx</summary>
 
@@ -155,9 +156,25 @@ Now comes the easy part, we just have to create pages for our content. This is p
   ```
 </details><br>
 
-In this example we could move most of the content inside `BooksPage` and `BooksModal` into its own component for reusability. But if we want different layout or flows then its simpler to just write seperate files for simplicity.
+In this example we could move most of the content inside `BooksPage` and `BooksModal` into its own component for reusability. But if we want different layout or flows then its simpler to just write seperate files for simplicity.<br><br>
+
+## Blocking unindended access
+It's best practice to also limit or block access to paths that are not intended to be used when you're using parallel/intersecting paths. This can be done by adding components that return `null` or `false`. In our previous example they would have stopped access to <a href="">www.teamwork.no/books/somethinginvalid</a>.
+If you want to know more you can read more about [navigation states](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#active-state-and-navigation) safeguards.
+
+<details>
+  <summary>Code example: /@modal/default.tsx</summary>
+
+  ```ts filename="page.tsx"
+  export default function Default() {
+    return null;
+  }
+  ```
+</details>
+<br><br>
 
 ## Final project tree
+When we have added all the required files we should end up with a project that contains at least these files.
 
   ```
  app/
@@ -168,12 +185,10 @@ In this example we could move most of the content inside `BooksPage` and `BooksM
   │  ├─ default.tsx         <- React component that returns null (safeguard).
   |  ├─ [bookId]/
   │  │  ├─ (.)books/        <- Must start with (.) and then the same folder name as our page.
-  │  │  │  ├─ page.tsx      <- Place content inside here that you want to render inside Modal component
-  |  |  ├─ [...catchAll]/
-  |  |  |  ├─ page.tsx      <- React component that returns null (safeguard).
+  │  │  │  ├─ page.tsx      <- Place dynamic content inside here that you want to render inside Modal component
   ├─ books/
   │  ├─ [bookId]/
-  │  │  ├─ page.tsx         <- Place content inside here that will show on a full page
+  │  │  ├─ page.tsx         <- Place dynamic content inside here that will show on a full page
   ├─ layout.tsx
   ├─ page.tsx
   ```
