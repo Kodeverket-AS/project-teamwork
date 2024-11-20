@@ -102,7 +102,7 @@ export default function Success() {
       orange={false}
       fade>
       <div id="success" className="text-kv-black">
-        <h1 className="pb-10">Suksess</h1>
+        <h2 className="pb-10">Suksess</h2>
         {/* <p className="max-w-[60ch] text-pretty">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
           earum unde placeat ad recusandae? Repellat aperiam vel

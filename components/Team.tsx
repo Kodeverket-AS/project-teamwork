@@ -106,7 +106,7 @@ export default function TeamMembers() {
       fade>
       <div className="relative">
         <div className="text-kv-black">
-          <h1 className="pb-10">Vårt team</h1>
+          <h2 className="pb-10">Vårt team</h2>
           <ul className="appearance-none flex gap-4">
             {locations.map((loc) => (
               <li
