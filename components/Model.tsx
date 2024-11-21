@@ -13,7 +13,7 @@ export default function Model() {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   return (
-    <div id="model" className="bg-teamwork-secondary-orange w-full flex flex-col md:flex-row px-5 md:px-10 py-14 gap-10">
+    <div id="model" className="bg-teamwork-secondary-orange w-full flex flex-col md:flex-row px-6 md:px-10 py-14 gap-10">
       <div className="flex flex-col gap-3 w-full md:w-1/2">
         <h2>Modell</h2>
         <div

@@ -7,7 +7,7 @@ import HeroImage from "../public/HeroImage.jpg";
 
 export default function Hero() {
   return (
-    <div className="bg-kv-white w-full flex flex-col px-5 pb-14 gap-3 md:flex-row md:px-10">
+    <div className="bg-kv-white w-full flex flex-col px-6 pb-14 gap-3 md:flex-row md:px-10">
       <div className="w-full md:w-1/2">
         <div className="w-full h-full md:w-5/6 md:h-[27rem]">
           <Image

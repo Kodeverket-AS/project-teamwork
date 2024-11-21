@@ -51,7 +51,7 @@ export default function Histories() {
           </div>
           <div className="bg-kv-white text-kv-black text-pretty p-4 sm:p-10 flex flex-col gap-6 justify-between rounded-lg w-full h-full leading-relaxed">
             <div>
-              <h2>{dummyData.title}</h2>
+              <h3>{dummyData.title}</h3>
               <p>{dummyData.content}</p>
             </div>
 
