@@ -104,7 +104,7 @@ Afterwards we must create a portal target in our base `layout.tsx` file. This is
     );
   }
   ```
-</details><br><br>
+</details><br>
 
 ## Thats fine, but how do I use this?
   We already have a modal for newsletter, but lets add one for each book that teamwork page has linked.
@@ -192,6 +192,11 @@ app/
 ├─ page.tsx
 ```
 <br><br>
+
+## Help, I'm getting errors
+- `Application error: a client-side exception has occurred (see the browser console for more information).`
+
+This problem occours because `.next` folder contains old cached data. If you delete this folder it will be rebuilt next time you run `npm run dev`
 
 ## You suck at explaining
 Here, Kyle is much better at explaining than I am. click to watch this youtube video instead
