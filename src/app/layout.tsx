@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Ysabeau_SC } from "next/font/google";
-import { ScrollToTopButton } from "../../components/Buttons";
-import { NavbarAlt } from "../../components/navigation/NavBar";
+import { ScrollToTopButton } from "@/components/Buttons";
+import { NavbarAlt } from "@/components/navigation/NavBar";
 import { SanityProvider } from "@/context/sanity";
-import Footer from "../../components/Footer";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({
