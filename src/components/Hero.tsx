@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import HeroImage from "../public/HeroImage.jpg";
 import { DownloadButton } from "./Buttons";
 
 export default function Hero() {
@@ -10,7 +9,7 @@ export default function Hero() {
       <div className="w-full md:w-1/2">
         <div className="w-full h-full md:w-5/6 md:h-[27rem]">
           <Image
-            src={HeroImage}
+            src="/HeroImage.jpg"
             width={1500}
             height={1000}
             className="w-full h-full object-cover"

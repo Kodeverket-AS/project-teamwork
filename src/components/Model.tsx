@@ -2,10 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import ModelImage from "../public/ModelImage.jpg";
-import Icon1 from "../public/icons/bxl_graphql.svg";
-import Icon2 from "../public/icons/octicon_graph-24.svg";
-import Icon3 from "../public/icons/material-symbols-light_handshake-outline.svg";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function Model() {
@@ -26,7 +22,7 @@ export default function Model() {
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
-                  src={Icon1}
+                  src="/icons/bxl_graphql.svg"
                   width={100}
                   height={100}
                   className="w-auto h-10"
@@ -58,7 +54,7 @@ export default function Model() {
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
-                  src={Icon2}
+                  src="/icons/octicon_graph-24.svg"
                   width={100}
                   height={100}
                   className="w-auto h-10"
@@ -91,7 +87,7 @@ export default function Model() {
             <div className="flex flex-row justify-between">
               <div className="flex flex-row justify-center items-center">
                 <Image
-                  src={Icon3}
+                  src="/icons/material-symbols-light_handshake-outline.svg"
                   width={100}
                   height={100}
                   className="w-auto h-10"
@@ -116,7 +112,7 @@ export default function Model() {
       </div>
       <div className="w-full md:w-1/2">
         <Image
-          src={ModelImage}
+          src="/ModelImage.jpg"
           width={1000}
           height={750}
           alt="Mann i dressjakke som ser mot kamera"

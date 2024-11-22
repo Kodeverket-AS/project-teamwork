@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Hamburger from "./Hamburger";
 import { BookingButton } from "@/components/Buttons";
-import LogoDark from "../../public/LogoDark.svg";
 
 export function NavbarAlt() {
   return (
@@ -14,7 +13,7 @@ export function NavbarAlt() {
           <Link href="/" aria-label="Gå til landingssiden">
             <Image
               className="w-28 lg:w-36"
-              src={LogoDark}
+              src="/LogoDark.svg"
               width={350}
               height={220}
               alt="Teamwork Logo"

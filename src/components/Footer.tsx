@@ -9,14 +9,6 @@ import {
   FaMapMarkerAlt,
   FaBuilding,
 } from "react-icons/fa";
-import LogoLight from "../public/LogoLight.svg";
-
-// const sections = [
-//   { name: "Modell", href: "/" },
-//   { name: "Tjenester", href: "/" },
-//   { name: "Historier", href: "/" },
-//   { name: "Suksess", href: "/" },
-// ];
 
 const contactInfo = [
   { icon: FaMapMarkerAlt, text: "Rosenholmveien 25, 1414 Trollåsen" },
@@ -58,7 +50,7 @@ export default function Footer() {
     <footer className="w-full h-screen sm:h-fit flex flex-col items-center justify-center pt-12 pb-8 text-kv-white bg-[#373131]">
       <div className="flex flex-row justify-center items-start w-56 h-auto mx-auto pb-12">
         <Image
-          src={LogoLight}
+          src="/LogoLight.svg"
           height={250}
           width={350}
           className=""
