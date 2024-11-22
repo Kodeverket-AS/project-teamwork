@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { DownloadButton } from "./Buttons";
 import HeroImage from "../public/HeroImage.jpg";
+import { DownloadButton } from "./Buttons";
 
 export default function Hero() {
   return (
