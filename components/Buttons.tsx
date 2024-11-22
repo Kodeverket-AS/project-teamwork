@@ -38,14 +38,14 @@ export function ScrollToTopButton() {
   );
 }
 
-export function DownloadButton() {
+export function DownloadButton({ href, text }: { href: string, text: string }) {
   return (
-    <a
-      href=""
-      rel="noopener noreferrer"
-      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90">
-      Last ned håndboken
-    </a>
+    <Link
+      href={href}
+      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-white hover:bg-teamwork-primary-orange/90"
+    >
+      {text}
+    </Link>
   );
 }
 
