@@ -9,16 +9,8 @@ import {
   FaUserAltSlash,
 } from "react-icons/fa";
 import { useHorizontalScroll } from "@/hooks/useScrolls";
-import { Books } from "@/types/sanity.types";
-import { useSanityContext } from "@/context/sanity";
+import { Books as tBooks } from "@/types/sanity.types";
 
-/**
- * ====================================================
- * COMPONENTS DECLARATIONS
- * ====================================================
- */
-
-// MISSING IMAGE REPLACEMENT COMPONENT
 const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
@@ -29,7 +21,7 @@ const ImageMissing = () => (
 );
 
 // BOOK
-const Book = ({ title, desc, image, url }: Books) => (
+const Book = ({ title, desc, image, url }: tBooks) => (
   <div className="group bg-white p-4 text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
@@ -60,17 +52,8 @@ const Book = ({ title, desc, image, url }: Books) => (
   </div>
 );
 
-/**
- * ====================================================
- * MAIN COMPONENT (BOOKS) EXPORT DEFAULT
- * ====================================================
- */
-
-export default function BooksSection() {
-  const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll({ scrollLength: 1 });
-  const { books } = useSanityContext();
-  console.log("Test console log books: ", books);
+export default function BooksSection({ content }: { content: tBooks[] }) {
+  const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 1 });
 
   return (
     <SectionComponent
@@ -87,18 +70,18 @@ export default function BooksSection() {
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
             className="w-full overflow-x-auto pl-4 pr-4 py-4 sm:pl-6 flex flex-row gap-8 items-center">
-            {books ? (
-              books.map((book: Books) => (
+            {content.length > 0 ?
+              content.map((book) => (
                 <Book
                   key={book._id}
                   {...book}
                 />
-              ))
-            ) : (
-              <div className="text-kv-black">
-                Ingen bøker tilgjengelig
-              </div>
-            )}
+              )
+              ) : (
+                <div className="text-kv-black">
+                  Ingen bøker tilgjengelig
+                </div>
+              )}
           </div>
         </div>
         <div className="flex w-full justify-end pt-4">
