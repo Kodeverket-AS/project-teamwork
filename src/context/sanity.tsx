@@ -23,8 +23,7 @@ export const useSanityContext = () => {
 };
 
 // Provide wrapper for context
-type Children = { children: ReactNode };
-export const SanityProvider = ({ children }: Children) => {
+export const SanityProvider = ({ children }: {children: ReactNode}) => {
   const { data } = useSanity();
 
   return (
