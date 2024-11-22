@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowUp, FaCalendarAlt } from "react-icons/fa";
 
 export function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,5 +74,19 @@ export function ButtonResponsive({ href, text }: TBasicButton) {
       className={`bg-teamwork-primary-orange min-w-48 w-full sm:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90`}>
       {text || "Les mer"}
     </Link>
+  );
+}
+
+
+export function BookingButton() {
+  return (
+    <a
+      href=""
+      rel="noopener noreferrer"
+      className="bg-teamwork-primary-orange w-fit px-3 py-2 rounded text-center flex flex-row hover:bg-kv-white focus:bg-kv-white hover:border hover:border-teamwork-primary-orange focus:border focus:border-teamwork-primary-orange"
+    >
+      <FaCalendarAlt className="w-5 h-5" />
+      <p className="hidden md:block md:pl-2">Møtebooking</p>
+    </a>
   );
 }

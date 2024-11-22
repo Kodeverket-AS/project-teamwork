@@ -78,7 +78,7 @@ export default function BooksSection() {
       fade>
       <div>
         <div className="text-kv-black">
-          <h1 className="pb-10">Våre bøker</h1>
+          <h2 className="pb-10">Våre bøker</h2>
         </div>
         <div className="relative w-full h-fit py-4 ">
           <div className="hidden sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-kv-white to-kv-white/0"></div>

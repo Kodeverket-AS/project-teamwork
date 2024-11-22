@@ -33,8 +33,8 @@ export default function Histories() {
     <SectionComponent
       orange={true}
       fade>
-      <div>
-        <h1 className="pb-10">Historier</h1>
+      <div id="histories">
+        <h2 className="pb-10">Historier</h2>
         <div className="flex flex-col sm:h-[528px] sm:flex-row gap-4 sm:gap-10 justify-between items-center">
           <div className="w-full h-64 sm:h-full rounded-lg overflow-hidden">
             {dummyData.image ? (
@@ -51,7 +51,7 @@ export default function Histories() {
           </div>
           <div className="bg-kv-white text-kv-black text-pretty p-4 sm:p-10 flex flex-col gap-6 justify-between rounded-lg w-full h-full leading-relaxed">
             <div>
-              <h2>{dummyData.title}</h2>
+              <h3>{dummyData.title}</h3>
               <p>{dummyData.content}</p>
             </div>
 

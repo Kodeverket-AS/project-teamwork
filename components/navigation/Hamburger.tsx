@@ -40,22 +40,22 @@ const Hamburger = () => {
       >
         <ul className="p-4 space-y-4">
           <li>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="#model" onClick={() => setIsOpen(false)}>
               Modell
             </Link>
           </li>
           <li>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="#services" onClick={() => setIsOpen(false)}>
               Tjenester
             </Link>
           </li>
           <li>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="#histories" onClick={() => setIsOpen(false)}>
               Historier
             </Link>
           </li>
           <li>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="#success" onClick={() => setIsOpen(false)}>
               Suksess
             </Link>
           </li>

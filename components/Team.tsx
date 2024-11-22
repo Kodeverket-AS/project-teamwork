@@ -48,7 +48,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
       </div>
       <div className="w-full h-full p-4 pb-6">
         <div className="pb-4">
-          <h2 className="text-2xl">{name}</h2>
+          <h3 className="text-2xl">{name}</h3>
           <p className="text-sm">{title}</p>
         </div>
         <div className="text-xs text-kv-black/70 leading-relaxed">
@@ -106,7 +106,7 @@ export default function TeamMembers() {
       fade>
       <div className="relative">
         <div className="text-kv-black">
-          <h1 className="pb-10">Vårt team</h1>
+          <h2 className="pb-10">Vårt team</h2>
           <ul className="appearance-none flex gap-4">
             {locations.map((loc) => (
               <li

@@ -14,7 +14,7 @@ export default async function Home() {
   const services = data.services;
 
   return (
-    <main className="flex flex-col items-center justify-between">
+    <main className="flex flex-col items-center justify-between w-full">
       <Hero />
       <Model />
       <Services content={services} />

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Services({ content }: { content: tServices[]}) {
   return (
-    <div className="bg-kv-white w-full flex flex-col px-5 md:px-10 py-14 gap-10">
+    <div id="services" className="bg-kv-white w-full flex flex-col px-6 md:px-10 py-14 gap-10">
       <h2>Tjenester</h2>
       <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 w-full gap-10">
         {content.map(item => (

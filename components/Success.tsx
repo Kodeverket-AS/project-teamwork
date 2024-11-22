@@ -58,7 +58,7 @@ const ReviewCard = ({
           <Rating rating={rating ?? 0} />
         </div>
         <div>
-          <h2 className="font-semibold ">{title}</h2>
+          <h3 className="font-semibold ">{title}</h3>
           <p className="text-sm sm:text-base text-pretty max-w-[65ch]">
             {content}
           </p>
@@ -101,8 +101,8 @@ export default function Success() {
     <SectionComponent
       orange={false}
       fade>
-      <div className="text-kv-black">
-        <h1 className="pb-10">Suksess</h1>
+      <div id="success" className="text-kv-black">
+        <h2 className="pb-10">Suksess</h2>
         {/* <p className="max-w-[60ch] text-pretty">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
           earum unde placeat ad recusandae? Repellat aperiam vel
