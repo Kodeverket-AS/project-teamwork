@@ -72,17 +72,23 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  modal,
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  modal: React.ReactNode
+  children: React.ReactNode
+}) {
   return (
     <html lang="nb" className={`${inter.variable} ${ysabeauSC.variable}`}>
       <body className={`${inter.className} antialiased overflow-x-hidden`}>
         <NavbarAlt />
-        <SanityProvider>{children}</SanityProvider>
+        <SanityProvider>
+          {children}
+          {modal}
+        </SanityProvider>
         <ScrollToTopButton />
         <Footer />
+        <div id="modal-root" />
       </body>
     </html>
   );
