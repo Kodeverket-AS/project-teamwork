@@ -8,7 +8,7 @@ import Team from "@/components/Team";
 import Success from "@/components/Success";
 import { useSanityContext } from "@/context/sanity";
 
-export default async function Home() {
+export default function Home() {
   const { books, customers, feedback, services, team } = useSanityContext()
   
   return (
