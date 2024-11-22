@@ -274,9 +274,9 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 export type SanityData = {
-  team: Team[];
-  services: Services[];
-  feedback: Feedback[];
-  customers: Customers[];
-  books: Books[];
-} | null;
+  team: Team[] | [];
+  services: Services[] | [];
+  feedback: Feedback[] | [];
+  customers: Customers[] | [];
+  books: Books[] | [];
+};

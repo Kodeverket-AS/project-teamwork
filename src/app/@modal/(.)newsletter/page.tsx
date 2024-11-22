@@ -1,7 +1,7 @@
 "use client"
 
 import { FormEvent } from "react";
-import { ModalContainer } from "../../../../components/modal/Container";
+import { ModalContainer } from "@/components/modal/Container";
 
 export default function ModalPage() {
   const handleSignup = (event: FormEvent<HTMLFormElement>) => {

@@ -6,10 +6,8 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import SectionComponent from "./sections/SectionComponent";
-import { useHorizontalScroll } from "../src/hooks/useScrolls";
-import { useSanityContext } from "../src/context/sanity";
-import { Team } from "../src/types/sanity.types";
-// import placeholderImage from "@/assets/placeholder.jpg";
+import { useHorizontalScroll } from "@/hooks/useScrolls";
+import { Team } from "@/types/sanity.types";
 
 const Member = ({ name, title, tlf, email, image }: Team) => {
   const [copied, setCopied] = useState(false);
@@ -77,28 +75,25 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
   );
 };
 
-export default function TeamMembers() {
-  const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll({ scrollLength: 1 });
+export default function TeamMembers({ content }: { content: Team[] }) {
+  const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 1 });
   const [locations, setLocations] = useState<string[]>([]);
   const [location, setLocation] = useState<string>("alle");
-  const { team } = useSanityContext();
 
   const filteredContent =
     location === "alle"
-      ? team
-      : team &&
-        team.filter((item) => item.department?.includes(location));
+      ? content
+      : content.filter((item) => item.department?.includes(location));
 
   useEffect(() => {
-    if (!team) return;
+    if (!content) return;
     // Generate list of selectable work locations
-    const flatten = team
+    const flatten = content
       .map((member) => member.department)
       .flat()
       .filter((item) => item !== undefined);
     setLocations(["alle", ...new Set(flatten)]);
-  }, [team]);
+  }, [content]);
 
   return (
     <SectionComponent
@@ -111,11 +106,10 @@ export default function TeamMembers() {
             {locations.map((loc) => (
               <li
                 key={loc}
-                className={`appearance-none py-3 underline-offset-4 capitalize ${
-                  location === loc
-                    ? "underline font-semibold"
-                    : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
-                } cursor-pointer`}
+                className={`appearance-none py-3 underline-offset-4 capitalize ${location === loc
+                  ? "underline font-semibold"
+                  : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
+                  } cursor-pointer`}
                 onClick={() => setLocation(loc)}>
                 {loc}
               </li>

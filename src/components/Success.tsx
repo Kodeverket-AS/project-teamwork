@@ -11,14 +11,9 @@ import {
 } from "react-icons/fa6";
 import { useHorizontalScroll } from "@/hooks/useScrolls";
 import { FaUserAltSlash } from "react-icons/fa";
-import { Feedback } from "@/types/sanity.types";
-import { useSanityContext } from "@/context/sanity";
+import { Feedback as tFeedback } from "@/types/sanity.types";
 
-type TRatingProps = {
-  rating: number;
-};
-
-const Rating = ({ rating }: TRatingProps) => {
+const Rating = ({ rating }: {rating: number}) => {
   const stars = [];
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
@@ -50,7 +45,7 @@ const ReviewCard = ({
   title,
   content,
   image,
-}: Feedback) => {
+}: tFeedback) => {
   return (
     <div className="group w-full sm:w-3/5 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
       <div className="w-full">
@@ -86,16 +81,8 @@ const ReviewCard = ({
   );
 };
 
-/**
- * ====================================================
- * SUCCESS (EXPORT DEFAULT)
- * ====================================================
- */
-export default function Success() {
-  const { scrollContainerRef, handleScrollHorizontal } =
-    useHorizontalScroll({ scrollLength: 0.6 });
-
-  const { feedback } = useSanityContext();
+export default function Success({ content }: { content: tFeedback[] }) {
+  const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 0.6 });
 
   return (
     <SectionComponent
@@ -112,7 +99,7 @@ export default function Success() {
           ref={scrollContainerRef}
           style={{ scrollbarWidth: "none" }}
           className="flex overflow-x-scroll gap-12 py-8">
-          {feedback?.map((feedback: Feedback) => (
+          {content.map((feedback) => (
             <ReviewCard
               key={feedback._id}
               {...feedback}
