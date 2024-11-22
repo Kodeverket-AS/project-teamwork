@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Hamburger from "./Hamburger";
-import { BookingButton } from "../Buttons";
+import { BookingButton } from "@/components/Buttons";
 import LogoDark from "../../public/LogoDark.svg";
 
 export function NavbarAlt() {
