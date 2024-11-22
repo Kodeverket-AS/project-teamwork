@@ -1,18 +1,14 @@
-import Hero from "../../components/Hero";
-import Model from "../../components/Model";
-import Services from "../../components/Services";
-import BooksSection from "../../components/Books";
-import Histories from "../../components/Histories";
-import Team from "../../components/Team";
-import Success from "../../components/Success";
-import { getData } from "../../sanity/getData";
-// import { dummyData } from "../../components/dummydata/dummydata";
+import Hero from "@/components/Hero";
+import Model from "@/components/Model";
+import Services from "@/components/Services";
+import BooksSection from "@/components/Books";
+import Histories from "@/components/Histories";
+import Team from "@/components/Team";
+import Success from "@/components/Success";
+import { useSanityContext } from "@/context/sanity";
 
 export default async function Home() {
-  const data = await getData();
-  // console.log(data);
-  const services = data.services;
-
+  const { books, customers, feedback, services, team } = useSanityContext()
   return (
     <main className="flex flex-col items-center justify-between w-full">
       <Hero />
