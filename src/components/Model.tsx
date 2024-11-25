@@ -3,121 +3,123 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import SectionComponent from "./sections/SectionComponent";
 
 export default function Model() {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   return (
-    <div id="model" className="bg-teamwork-secondary-orange w-full flex flex-col md:flex-row px-6 md:px-10 py-14 gap-10">
-      <div className="flex flex-col gap-3 w-full md:w-1/2">
-        <h2>Modell</h2>
-        <div
-          className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
-            show1 ? "h-fit" : "h-14 overflow-hidden"
-          }`}>
-          <button
-            onClick={() => setShow1(!show1)}
-            className="w-full">
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-row justify-center items-center">
-                <Image
-                  src="/icons/bxl_graphql.svg"
-                  width={100}
-                  height={100}
-                  className="w-auto h-10"
-                  alt="ikon tilhørende et ledende fagmiljø"
-                />
-                <h4>Et ledende fagmiljø</h4>
+    <SectionComponent orange={true} fade>
+      <div
+        id="model"
+        className="w-full flex flex-col md:flex-row py-14 gap-10"
+      >
+        <div className="flex flex-col gap-3 w-full md:w-1/2">
+          <h2>Modell</h2>
+          <div
+            className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
+              show1 ? "h-fit" : "h-14 overflow-hidden"
+            }`}
+          >
+            <button onClick={() => setShow1(!show1)} className="w-full">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-center items-center">
+                  <Image
+                    src="/icons/bxl_graphql.svg"
+                    width={100}
+                    height={100}
+                    className="w-auto h-10"
+                    alt="ikon tilhørende et ledende fagmiljø"
+                  />
+                  <h4>Et ledende fagmiljø</h4>
+                </div>
+                {show1 ? (
+                  <FaArrowUp className="w-6 h-auto" />
+                ) : (
+                  <FaArrowDown className="w-6 h-auto" />
+                )}
               </div>
-              {show1 ? (
-                <FaArrowUp className="w-6 h-auto" />
-              ) : (
-                <FaArrowDown className="w-6 h-auto" />
-              )}
-            </div>
-          </button>
-          <p>
-            Here comes a text about this subject, please change this
-            before the page goes live it's critical and btw I need to
-            fill the space all the time you have to leave the space.
-            Just leave me alone, I know what to do.
-          </p>
+            </button>
+            <p>
+              Here comes a text about this subject, please change this before
+              the page goes live it's critical and btw I need to fill the space
+              all the time you have to leave the space. Just leave me alone, I
+              know what to do.
+            </p>
+          </div>
+          <div
+            className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
+              show2 ? "h-fit" : "h-14 overflow-hidden"
+            }`}
+          >
+            <button onClick={() => setShow2(!show2)} className="w-full">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-center items-center">
+                  <Image
+                    src="/icons/octicon_graph-24.svg"
+                    width={100}
+                    height={100}
+                    className="w-auto h-10"
+                    alt="ikon tilhørende et ledende fagmiljø"
+                  />
+                  <h4>Medarbeiderskap</h4>
+                </div>
+                {show2 ? (
+                  <FaArrowUp className="w-6 h-auto" />
+                ) : (
+                  <FaArrowDown className="w-6 h-auto" />
+                )}
+              </div>
+            </button>
+            <p>
+              Medarbeiderskap er Nordens ideal for samspill og ansvarsdeling på
+              arbeidsplassen. Sammen med professor Stefan Tengblad i Göteborg,
+              har Johan Velten bidratt til å gi begrepet et konkret
+              meningsinnhold og verktøy for praktisk utvikling.
+            </p>
+          </div>
+          <div
+            className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
+              show3 ? "h-fit" : "h-14 overflow-hidden"
+            }`}
+          >
+            <button onClick={() => setShow3(!show3)} className="w-full">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-center items-center">
+                  <Image
+                    src="/icons/material-symbols-light_handshake-outline.svg"
+                    width={100}
+                    height={100}
+                    className="w-auto h-10"
+                    alt="ikon tilhørende et ledende fagmiljø"
+                  />
+                  <h4>Solid samarbeidspartner</h4>
+                </div>
+                {show3 ? (
+                  <FaArrowUp className="w-6 h-auto" />
+                ) : (
+                  <FaArrowDown className="w-6 h-auto" />
+                )}
+              </div>
+            </button>
+            <p>
+              Here comes a text about this subject, please change this before
+              the page goes live it's critical and btw I need to fill the space
+              all the time you have to leave the space. Just leave me alone, I
+              know what to do.
+            </p>
+          </div>
         </div>
-        <div
-          className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
-            show2 ? "h-fit" : "h-14 overflow-hidden"
-          }`}>
-          <button
-            onClick={() => setShow2(!show2)}
-            className="w-full">
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-row justify-center items-center">
-                <Image
-                  src="/icons/octicon_graph-24.svg"
-                  width={100}
-                  height={100}
-                  className="w-auto h-10"
-                  alt="ikon tilhørende et ledende fagmiljø"
-                />
-                <h4>Medarbeiderskap</h4>
-              </div>
-              {show2 ? (
-                <FaArrowUp className="w-6 h-auto" />
-              ) : (
-                <FaArrowDown className="w-6 h-auto" />
-              )}
-            </div>
-          </button>
-          <p>
-            Medarbeiderskap er Nordens ideal for samspill og
-            ansvarsdeling på arbeidsplassen. Sammen med professor
-            Stefan Tengblad i Göteborg, har Johan Velten bidratt til å
-            gi begrepet et konkret meningsinnhold og verktøy for
-            praktisk utvikling.
-          </p>
-        </div>
-        <div
-          className={`bg-kv-white text-kv-black shadow px-3 py-2 ${
-            show3 ? "h-fit" : "h-14 overflow-hidden"
-          }`}>
-          <button
-            onClick={() => setShow3(!show3)}
-            className="w-full">
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-row justify-center items-center">
-                <Image
-                  src="/icons/material-symbols-light_handshake-outline.svg"
-                  width={100}
-                  height={100}
-                  className="w-auto h-10"
-                  alt="ikon tilhørende et ledende fagmiljø"
-                />
-                <h4>Solid samarbeidspartner</h4>
-              </div>
-              {show3 ? (
-                <FaArrowUp className="w-6 h-auto" />
-              ) : (
-                <FaArrowDown className="w-6 h-auto" />
-              )}
-            </div>
-          </button>
-          <p>
-            Here comes a text about this subject, please change this
-            before the page goes live it's critical and btw I need to
-            fill the space all the time you have to leave the space.
-            Just leave me alone, I know what to do.
-          </p>
+        <div className="w-full md:w-1/2">
+          <Image
+            src="/ModelImage.jpg"
+            width={1000}
+            height={750}
+            alt="Mann i dressjakke som ser mot kamera"
+          />
         </div>
       </div>
-      <div className="w-full md:w-1/2">
-        <Image
-          src="/ModelImage.jpg"
-          width={1000}
-          height={750}
-          alt="Mann i dressjakke som ser mot kamera"
-        />
-      </div>
-    </div>
+    </SectionComponent>
   );
 }
