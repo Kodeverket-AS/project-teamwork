@@ -42,7 +42,7 @@ export function DownloadButton({ href, text }: { href: string, text: string }) {
   return (
     <Link
       href={href}
-      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-white hover:bg-teamwork-primary-orange/90"
+      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-kv-black hover:bg-teamwork-primary-orange/90"
     >
       {text}
     </Link>
