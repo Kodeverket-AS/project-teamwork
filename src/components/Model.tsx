@@ -6,9 +6,9 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
 import { MdOutlineHandshake } from "react-icons/md";
 import { MdJoinLeft } from "react-icons/md";
-
 import SectionComponent from "./sections/SectionComponent";
 
+// ACCORDION TYPE PROPS
 type TAccordionProps = {
   subjectIcon: React.ReactElement;
   title: string;
@@ -17,6 +17,7 @@ type TAccordionProps = {
   toggle?: () => void;
 };
 
+// ACCORDION DATA
 const accordionData: TAccordionProps[] = [
   {
     subjectIcon: <RiTeamFill />,
@@ -38,6 +39,7 @@ const accordionData: TAccordionProps[] = [
   },
 ];
 
+// ACCORDION COMPONENT
 const AccordionComponent: React.FC<TAccordionProps> = ({
   subjectIcon,
   title,
@@ -89,6 +91,7 @@ const AccordionComponent: React.FC<TAccordionProps> = ({
   );
 };
 
+// MODEL COMPONENT
 export default function Model() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
