@@ -20,7 +20,7 @@ const SectionComponent = ({
       className={`w-screen ${
         orange ? "bg-teamwork-secondary-orange" : "bg-kv-white"
       }`}>
-      <div className="container mx-auto py-14 px-6 sm:px-0">
+      <div className="container mx-auto py-14 px-6 sm:px-8 md:px-10">
         {fade ? <FadeInSection>{children}</FadeInSection> : children}
       </div>
     </section>
