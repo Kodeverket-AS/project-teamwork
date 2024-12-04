@@ -34,7 +34,7 @@ export default function Services({ content }: { content: tServices[]}) {
           {content.map((item) => (
             <div
               key={item._id}
-              className="relative h-60 shadow md:h-80 overflow-hidden p-3 hover:border-teamwork-primary-orange hover:border group transition-all duration-500 ease-in-out"
+              className="relative h-60 shadow md:h-80 overflow-hidden p-3 hover:border-teamwork-primary-orange hover:border group transition-all duration-500 ease-in-out 2xs:h-72 xs:h-80"
             >
               <Image
                 src={item.image?.url ?? "HeroImage.jpg"}

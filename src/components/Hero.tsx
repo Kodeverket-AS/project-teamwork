@@ -20,7 +20,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex flex-col gap-4 pl-0 md:pl-6 w-full md:w-1/2">
-          <h1>
+          <h1 className="md:text-[2rem] lg:text-[2.5rem]">
             Frigjør kraften i medarbeiderskapet: Den skandinaviske
             ledelsesmodellen.
           </h1>
