@@ -17,7 +17,7 @@ const dummyData = {
 const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
-    <p className="text-xs transition-all group-hover:text-sm">
+    <p className="text-xs transition-all group-hover:text-sm group-focus:text-sm">
       Image not available
     </p>
   </div>
