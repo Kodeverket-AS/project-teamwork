@@ -17,7 +17,7 @@ const dummyData = {
 const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
-    <p className="text-xs transition-all group-hover:text-sm">
+    <p className="text-xs transition-all group-hover:text-sm group-focus:text-sm">
       Image not available
     </p>
   </div>
@@ -35,8 +35,8 @@ export default function Histories() {
       fade>
       <div id="histories">
         <h2 className="pb-10">Historier</h2>
-        <div className="flex flex-col sm:h-[528px] sm:flex-row gap-4 sm:gap-10 justify-between items-center">
-          <div className="w-full h-64 sm:h-full rounded-lg overflow-hidden">
+        <div className="flex flex-col sm:h-[528px] lg:flex-row gap-4 sm:gap-10 justify-between items-center">
+          <div className="w-full h-64 lg:h-full rounded-lg overflow-hidden">
             {dummyData.image ? (
               <Image
                 src={dummyData.image}

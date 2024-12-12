@@ -47,7 +47,7 @@ const ReviewCard = ({
   image,
 }: tFeedback) => {
   return (
-    <div className="group w-full sm:w-3/5 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg">
+    <div className="group w-full sm:w-3/5 p-6 rounded-lg leading-relaxed flex flex-col sm:flex-row flex-shrink-0 justify-between gap-4 sm:gap-8 items-start transition-all duration-300 shadow-md hover:shadow-lg focus:shadow-lg">
       <div className="w-full">
         <div className="pb-4 text-2xl text-teamwork-primary-orange">
           <Rating rating={rating ?? 0} />
@@ -71,7 +71,7 @@ const ReviewCard = ({
             alt="Success"
             width={200}
             height={200}
-            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 transition-all duration-1000"
+            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 group-focus:scale-105 transition-all duration-1000"
           />
         ) : (
           <ImageMissing />

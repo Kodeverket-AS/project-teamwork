@@ -14,7 +14,7 @@ import { Books as tBooks } from "@/types/sanity.types";
 const ImageMissing = () => (
   <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
     <FaUserAltSlash className="text-3xl" />
-    <p className="text-xs transition-all group-hover:text-sm">
+    <p className="text-xs transition-all group-hover:text-sm group-focus:text-sm">
       Image not available
     </p>
   </div>
@@ -22,7 +22,7 @@ const ImageMissing = () => (
 
 // BOOK
 const Book = ({ title, desc, image, url }: tBooks) => (
-  <div className="group bg-white p-4 text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg">
+  <div className="group bg-white p-4 text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-96 sm:w-96 flex flex-col items-left justify-center transition-all duration-300 shadow-md border border-teamwork-primary-orange/0 hover:border-teamwork-primary-orange hover:shadow-lg focus:border-teamwork-primary-orange focus:shadow-lg">
     <div className="h-64 w-full rounded-md overflow-hidden">
       {image ? (
         <Image
@@ -30,7 +30,7 @@ const Book = ({ title, desc, image, url }: tBooks) => (
           alt={title ?? "placeholder image"}
           width={100}
           height={100}
-          className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 transition-all duration-1000"
+          className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 group-focus:scale-105 transition-all duration-1000"
         />
       ) : (
         <ImageMissing />
@@ -44,10 +44,7 @@ const Book = ({ title, desc, image, url }: tBooks) => (
     {url ? (
       <BuyButton href={url} />
     ) : (
-      <BuyButton
-        href="#"
-        text="Link mangler"
-      />
+      <BuyButton href="#" text="Link mangler" />
     )}
   </div>
 );

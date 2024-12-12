@@ -42,7 +42,7 @@ export function DownloadButton({ href, text }: { href: string, text: string }) {
   return (
     <Link
       href={href}
-      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-kv-black hover:bg-teamwork-primary-orange/90"
+      className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-kv-black hover:bg-teamwork-primary-orange/90 focus:bg-teamwork-primary-orange/90"
     >
       {text}
     </Link>
@@ -60,7 +60,8 @@ export function BuyButton({ href, wFit, text }: TBasicButton) {
     <Link
       href={href}
       rel="noopener noreferrer"
-      className={`bg-teamwork-primary-orange min-w-48 ${wFit ? "w-fit" : "w-full"} px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90`}>
+      className={`bg-teamwork-primary-orange min-w-48 ${wFit ? "w-fit" : "w-full"} px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90 focus:bg-teamwork-primary-orange/90`}
+    >
       {text || "Kjøp nå"}
     </Link>
   );
@@ -71,7 +72,8 @@ export function ButtonResponsive({ href, text }: TBasicButton) {
     <Link
       href={href}
       rel="noopener noreferrer"
-      className={`bg-teamwork-primary-orange min-w-48 w-full sm:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90`}>
+      className={`bg-teamwork-primary-orange min-w-48 w-full sm:w-fit px-6 py-3 text-base rounded-md font-semibold text-center hover:bg-teamwork-primary-orange/90 focus:bg-teamwork-primary-orange/90`}
+    >
       {text || "Les mer"}
     </Link>
   );

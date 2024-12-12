@@ -25,7 +25,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
       });
   };
   return (
-    <div className="group bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg">
+    <div className="group bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg focus:shadow-lg">
       <div className="h-72 sm:h-80 w-full overflow-hidden">
         {image ? (
           <Image
@@ -33,7 +33,7 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
             alt={name ?? "placeholder image"}
             width={100}
             height={100}
-            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 transition-all duration-1000"
+            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 group-focus:scale-105 transition-all duration-1000"
           />
         ) : (
           <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
@@ -63,8 +63,9 @@ const Member = ({ name, title, tlf, email, image }: Team) => {
             ) : (
               <p
                 onClick={() => copyToClipboard(email)}
-                className="cursor-pointer hover:underline underline-offset-2 "
-                title="Klikk for å kopiere epost">
+                className="cursor-pointer hover:underline focus:underline underline-offset-2"
+                title="Klikk for å kopiere epost"
+              >
                 {email}
               </p>
             )}
@@ -96,9 +97,7 @@ export default function TeamMembers({ content }: { content: Team[] }) {
   }, [content]);
 
   return (
-    <SectionComponent
-      orange={true}
-      fade>
+    <SectionComponent orange={true} fade>
       <div className="relative">
         <div className="text-kv-black">
           <h2 className="pb-10">Vårt team</h2>
@@ -106,11 +105,13 @@ export default function TeamMembers({ content }: { content: Team[] }) {
             {locations.map((loc) => (
               <li
                 key={loc}
-                className={`appearance-none py-3 underline-offset-4 capitalize ${location === loc
-                  ? "underline font-semibold"
-                  : "underline-none font-normal text-kv-black/70 hover:text-kv-black"
-                  } cursor-pointer`}
-                onClick={() => setLocation(loc)}>
+                className={`appearance-none py-3 underline-offset-4 capitalize ${
+                  location === loc
+                    ? "underline font-semibold"
+                    : "underline-none font-normal text-kv-black/70 hover:text-kv-black focus:text-kv-black"
+                } cursor-pointer`}
+                onClick={() => setLocation(loc)}
+              >
                 {loc}
               </li>
             ))}
@@ -122,13 +123,11 @@ export default function TeamMembers({ content }: { content: Team[] }) {
           <div
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none" }}
-            className="w-full overflow-x-auto py-5 pl-4 pr-8 flex flex-row gap-8 items-center">
+            className="w-full overflow-x-auto py-5 pl-4 pr-8 flex flex-row gap-8 items-center"
+          >
             {filteredContent &&
               filteredContent.map((item) => (
-                <Member
-                  key={item._id}
-                  {...item}
-                />
+                <Member key={item._id} {...item} />
               ))}
           </div>
         </div>
