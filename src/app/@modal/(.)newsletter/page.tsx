@@ -31,7 +31,6 @@ export default function ModalPage() {
           </p>
         </span>
         <button type="submit" className="bg-teamwork-primary-orange w-full md:w-fit px-6 py-3 text-base rounded-md font-semibold text-center text-white hover:bg-teamwork-primary-orange/90">Send meg håndbok på e-mail</button>
-        <button type="button" className="absolute top-2 right-2 text-white bg-teamwork-primary-orange" onClick={() => setVisible(false)}>X</button>
       </form>
     </ModalContainer>
   )
