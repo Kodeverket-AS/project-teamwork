@@ -1,0 +1,147 @@
+"use client";
+
+import Image from "next/image";
+import { FaUserAltSlash } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import SectionComponent from "./sections/SectionComponent";
+import { useHorizontalScroll } from "@/hooks/useScrolls";
+import { Team } from "@/types/sanity.types";
+
+const Member = ({ name, title, tlf, email, image }: Team) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopied(true);
+        // alert("Epost kopiert til utklippstavlen");
+        setTimeout(() => setCopied(false), 2500); // Hide the message after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  };
+  return (
+    <div className="group bg-white text-kv-black overflow-hidden rounded-lg min-w-72 sm:min-w-80 sm:w-80 flex flex-col items-left justify-center transition-all duration-300 shadow-md hover:shadow-lg focus:shadow-lg">
+      <div className="h-72 sm:h-80 w-full overflow-hidden">
+        {image ? (
+          <Image
+            src={image.url ?? ""}
+            alt={name ?? "placeholder image"}
+            width={100}
+            height={100}
+            className="object-cover w-full h-full bg-slate-300 scale-100 group-hover:scale-105 group-focus:scale-105 transition-all duration-1000"
+          />
+        ) : (
+          <div className="group w-full h-full flex flex-col justify-center items-center bg-teamwork-primary-orange/80 text-teamwork-secondary-orange">
+            <FaUserAltSlash className="text-3xl" />
+            <p className="text-xs transition-all group-hover:text-sm">
+              Image not available
+            </p>
+          </div>
+        )}
+      </div>
+      <div className="w-full h-full p-4 pb-6">
+        <div className="pb-4">
+          <h3 className="text-2xl">{name}</h3>
+          <p className="text-sm">{title}</p>
+        </div>
+        <div className="text-xs text-kv-black/70 leading-relaxed">
+          <div className="flex gap-1">
+            <b>Mobil:</b>
+            <p>{tlf}</p>
+          </div>
+          <div className="flex gap-1">
+            <b>Epost:</b>
+            {copied ? (
+              <span className="text-white bg-green-800 px-2 w-full">
+                Epost kopiert!
+              </span>
+            ) : (
+              <p
+                onClick={() => copyToClipboard(email)}
+                className="cursor-pointer hover:underline focus:underline underline-offset-2"
+                title="Klikk for å kopiere epost"
+              >
+                {email}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function TeamMembers({ content }: { content: Team[] }) {
+  const { scrollContainerRef, handleScrollHorizontal } = useHorizontalScroll({ scrollLength: 1 });
+  const [locations, setLocations] = useState<string[]>([]);
+  const [location, setLocation] = useState<string>("alle");
+
+  const filteredContent =
+    location === "alle"
+      ? content
+      : content.filter((item) => item.department?.includes(location));
+
+  useEffect(() => {
+    if (!content) return;
+    // Generate list of selectable work locations
+    const flatten = content
+      .map((member) => member.department)
+      .flat()
+      .filter((item) => item !== undefined);
+    setLocations(["alle", ...new Set(flatten)]);
+  }, [content]);
+
+  return (
+    <SectionComponent orange={true} fade>
+      <div className="relative">
+        <div className="text-kv-black">
+          <h2 className="pb-10">Vårt team</h2>
+          <ul className="appearance-none flex gap-4">
+            {locations.map((loc) => (
+              <li
+                key={loc}
+                className={`appearance-none py-3 underline-offset-4 capitalize ${
+                  location === loc
+                    ? "underline font-semibold"
+                    : "underline-none font-normal text-kv-black/70 hover:text-kv-black focus:text-kv-black"
+                } cursor-pointer`}
+                onClick={() => setLocation(loc)}
+              >
+                {loc}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="relative w-full sm:w-full h-fit">
+          <div className="hidden z-10 sm:block absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange to-teamwork-secondary-orange/0"></div>
+          <div className="hidden z-10 sm:block absolute right-0 top-0 h-full w-6 bg-gradient-to-r from-teamwork-secondary-orange/0 to-teamwork-secondary-orange"></div>
+          <div
+            ref={scrollContainerRef}
+            style={{ scrollbarWidth: "none" }}
+            className="w-full overflow-x-auto py-5 pl-4 pr-8 flex flex-row gap-8 items-center"
+          >
+            {filteredContent &&
+              filteredContent.map((item) => (
+                <Member key={item._id} {...item} />
+              ))}
+          </div>
+        </div>
+        <div className="flex w-full justify-end pt-4">
+          <div className="flex gap-2 px-5 text-base">
+            <button onClick={() => handleScrollHorizontal("left")}>
+              <FaChevronLeft />
+            </button>
+            <button onClick={() => handleScrollHorizontal("right")}>
+              <FaChevronRight />
+            </button>
+          </div>
+        </div>
+      </div>
+    </SectionComponent>
+  );
+}
